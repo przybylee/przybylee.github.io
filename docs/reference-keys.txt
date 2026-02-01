@@ -1,16 +1,5 @@
-eq:binom
-thm:tri
 about
 nfl-game-predictions
-parts
 footnotes-and-citations
 footnotes
 citations
-blocks
-equations
-theorems-and-proofs
-callout-blocks
-sharing-your-book
-publishing
-pages
-metadata-for-sharing
