@@ -1,0 +1,5 @@
+# NFL Game Predictions
+
+This chapter is an exposition on experiments using the (NFL predictions package)[https://github.com/przybylee/NFLpredictions].
+
+

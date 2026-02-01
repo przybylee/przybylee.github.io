@@ -12,6 +12,27 @@ description: |
   set in the _output.yml file.
 link-citations: yes
 github-repo: rstudio/bookdown-demo
+
+header-includes:
+  - \usepackage{amsmath}
+  - \usepackage{amssymb}
+  - \usepackage{amsthm}
+  - \usepackage{amsrefs}
+  
+  - \setcounter{secnumdepth}{2}
+  
+  - \newtheorem{theorem}{Theorem}
+  
+  - \newcommand{\R}{\mathbb{R}}
+  - \newcommand{\N}{\mathbb{N}}
+  - \newcommand{\var}{\text{var}}
+  - \newcommand{\cov}{\text{cov}}
+  - \newcommand{\Exp}{\mathbb{E}}
+  - \newcommand{\Prob}{\mathbb{P}}
+  - \newcommand{\simind}{\overset{\text{ind}}{\sim}}
+  - \newcommand{\simiid}{\overset{\text{iid}}{\sim}}
+  
+  - \DeclareMathOperator{\diag}{diag}
 ---
 
 # About
