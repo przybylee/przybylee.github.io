@@ -1,5 +1,5 @@
 # NFL Game Predictions
 
-This chapter is an exposition on experiments using the (NFL predictions package)[https://github.com/przybylee/NFLpredictions].
+This chapter is an exposition on experiments using the [NFL predictions package](https://github.com/przybylee/NFLpredictions).  This package is designed to predict the outcomes of NFL games in terms of win probability, point spread, and point totals.  In the first few sections, we will describe each method of the point spread and win probability models.  In the final section, we will compare the models and how they perform against betting market lines.  At this point, we find that the simple models offered by this package are outperformed by the betting market lines, but they do provide a reasonable baseline for future model development.
 
 
