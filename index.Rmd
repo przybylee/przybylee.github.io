@@ -35,9 +35,9 @@ header-includes:
   - \DeclareMathOperator{\diag}{diag}
 ---
 
-# About
+# About {-}
 
-This is a collection of statistics notes and projects.
+This is a collection of statistics notes and projects.  It is formatted as a book using the **bookdown** package.  A good source for learning about **bookdown** is [@xie2025].
 
 
 ```{r include=FALSE}

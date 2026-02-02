@@ -1,4 +1,3 @@
-about
 nfl-game-predictions
 footnotes-and-citations
 footnotes
