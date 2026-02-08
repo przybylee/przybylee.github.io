@@ -1,4 +1,7 @@
 nfl-game-predictions
+win-probability-model
+point-spread-model
+model-comparison
 footnotes-and-citations
 footnotes
 citations
