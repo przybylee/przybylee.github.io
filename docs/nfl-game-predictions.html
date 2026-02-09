@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Lee Przybylski" />
 
 
-<meta name="date" content="2026-02-07" />
+<meta name="date" content="2026-02-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -143,7 +143,13 @@ div.csl-indent {
 <p>This chapter is an exposition on experiments using the <a href="https://github.com/przybylee/NFLpredictions">NFL predictions package</a>. This package is designed to predict the outcomes of NFL games in terms of win probability, point spread, and point totals. In the first few sections, we will describe each method of the point spread and win probability models. In the final section, we will compare the models and how they perform against betting market lines. At this point, we find that the simple models offered by this package are outperformed by the betting market lines, but they do provide a reasonable baseline for future model development.</p>
 <div id="win-probability-model" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> Win Probability Model<a href="nfl-game-predictions.html#win-probability-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The simplest model in the package is a logistic regression model for win probability.</p>
+<p>The simplest model in the package is a logistic regression model for win probability. Assuming <span class="math inline">\(J\)</span> teams playing a total of <span class="math inline">\(N\)</span> games, our model starts with a <span class="math inline">\((N+1) \times (J+ 1)\)</span> design matrix <span class="math inline">\(X\)</span> where</p>
+<p><span class="math display">\[\begin{equation}
+  X_{ij} = \begin{cases}
+    1 &amp;\text{  if  } &amp; i = N+1\:\text{or}\:j = J+1\\
+    1 &amp;\text{  if  } &amp; \text{team} j \text{is the home team in game} i\\
+  \end{cases}
+\end{equation}\]</span></p>
 </div>
 <div id="point-spread-model" class="section level2 hasAnchor" number="1.2">
 <h2><span class="header-section-number">1.2</span> Point Spread Model<a href="nfl-game-predictions.html#point-spread-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
@@ -213,6 +219,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
