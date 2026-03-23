@@ -9,9 +9,11 @@ The simplest model in the package is a logistic regression model for win probabi
 \begin{equation}
   X_{ij} = \begin{cases}
     1 &\text{  if  } & i = N+1\:\text{or}\:j = J+1\\
-    1 &\text{  if  } & \text{team} j \text{is the home team in game} i\\
+    1 &\text{  if  } & \text{team } j \text{ is the home team in game } i\\
   \end{cases}
 \end{equation}
+
+We let the last column be all equal to 1 to represent the effect for home field advantage.  We let the a last row be equal to 1 so make the matrix have full column rank and center the team effect estimates at 0.
 
 ## Point Spread Model
 
