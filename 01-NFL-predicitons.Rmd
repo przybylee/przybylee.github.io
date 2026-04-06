@@ -7,15 +7,41 @@ This chapter is an exposition on experiments using the [NFL predictions package]
 The simplest model in the package is a logistic regression model for win probability.  Assuming $J$ teams playing a total of $N$ games, our model starts with a $(N+1) \times (J+ 1)$ design matrix $X$ where
 
 \begin{equation}
+  (\#eq:design-matrix-nfl)
   X_{ij} = \begin{cases}
-    1 &\text{  if  } & i = N+1\:\text{or}\:j = J+1\\
-    1 &\text{  if  } & \text{team } j \text{ is the home team in game } i\\
+    \phantom{-}1 & \text{  if  } i = N+1\:\text{or}\:j = J+1\\
+    \phantom{-}1 & \text{  if  } \text{team } j \text{ is the home team in game } i\\
+   -1 & \text{  if  } \text{team } j \text{ is the away team in game } i
   \end{cases}
 \end{equation}
 
-We let the last column be all equal to 1 to represent the effect for home field advantage.  We let the a last row be equal to 1 so make the matrix have full column rank and center the team effect estimates at 0.
+We let the last column be all equal to 1 to represent the effect for home field advantage.  We let the a last row be equal to 1 to make the matrix have full column rank and center the team effect estimates at 0.  The response, $w$, is a binary vector of length $N$ where $w_i = 1$ if the home team won game $i$ and $w_i = 0$ otherwise.  We use the logit link function, meaning that we assume
+
+\begin{equation}
+\begin{split}
+  &w_i \sim \text{Bernoulli}(\pi_i) \\
+  &\text{logit}(\pi_i) = X_i \tau
+\end{split}
+\end{equation}
+
+where $\tau$ is a vector of length $J+1$ containing the team effects and the home field advantage effect.  We fit this model using maximum likelihood estimation, which is implemented in the `glm` function in R.  The fitted model can then be used to predict the win probability for any game by plugging in the appropriate values for the home and away teams.
 
 ## Point Spread Model
+
+The point spread model uses the same design matrix, $X$ as was used in the win probability model.  Instead of a binary response, we let have a continuous response $y\in\mathbb{R}^{N+1}$ where $y_i$ equals the home team's score minus the away team's score in game $i\le N$, and $y_{N+1} = 0$.  We perform linear regression to solve the equation
+
+\begin{equation}
+  (#eq:spread-eq-nfl)
+  X\beta = y.
+\end{equation}
+
+We interpret the solution $\hat{\beta}$ as our best linear unbiased estimator (BLUE) of team effects, where $\hat{\beta}_j$ is the effect of team $j \le J$, where league average is $0$, and $\hat{\beta}_{J+1}$ is the effect of home field advantage, assumed to be uniform across the league. On a game by game, level, we are assuming the margin of victory for the home team is given by 
+
+\begin{equation}
+  {y}_i = \beta_{\text{home}[i]} - \beta_{\text{away}[i]} + \beta_{J+1} + \varepsilon_i, 
+\end{equation}
+
+where $\varepsilon_1, ...,\varepsilon_N$ are independent, identically distributed, and have mean 0.  There are a couple of obvious ways we can derive a win probability from this model's estimates.
 
 ## Model Comparison
 

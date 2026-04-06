@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Lee Przybylski" />
 
 
-<meta name="date" content="2026-03-22" />
+<meta name="date" content="2026-04-06" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -143,16 +143,35 @@ div.csl-indent {
 <div id="win-probability-model" class="section level2 hasAnchor" number="1.1">
 <h2><span class="header-section-number">1.1</span> Win Probability Model<a href="nfl-game-predictions.html#win-probability-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The simplest model in the package is a logistic regression model for win probability. Assuming <span class="math inline">\(J\)</span> teams playing a total of <span class="math inline">\(N\)</span> games, our model starts with a <span class="math inline">\((N+1) \times (J+ 1)\)</span> design matrix <span class="math inline">\(X\)</span> where</p>
-<p><span class="math display">\[\begin{equation}
+<p><span class="math display" id="eq:design-matrix-nfl">\[\begin{equation}
+  \tag{1.1}
   X_{ij} = \begin{cases}
-    1 &amp;\text{  if  } &amp; i = N+1\:\text{or}\:j = J+1\\
-    1 &amp;\text{  if  } &amp; \text{team } j \text{ is the home team in game } i\\
+    \phantom{-}1 &amp; \text{  if  } i = N+1\:\text{or}\:j = J+1\\
+    \phantom{-}1 &amp; \text{  if  } \text{team } j \text{ is the home team in game } i\\
+   -1 &amp; \text{  if  } \text{team } j \text{ is the away team in game } i
   \end{cases}
 \end{equation}\]</span></p>
-<p>We let the last column be all equal to 1 to represent the effect for home field advantage. We let the a last row be equal to 1 so make the matrix have full column rank and center the team effect estimates at 0.</p>
+<p>We let the last column be all equal to 1 to represent the effect for home field advantage. We let the a last row be equal to 1 to make the matrix have full column rank and center the team effect estimates at 0. The response, <span class="math inline">\(w\)</span>, is a binary vector of length <span class="math inline">\(N\)</span> where <span class="math inline">\(w_i = 1\)</span> if the home team won game <span class="math inline">\(i\)</span> and <span class="math inline">\(w_i = 0\)</span> otherwise. We use the logit link function, meaning that we assume</p>
+<p><span class="math display">\[\begin{equation}
+\begin{split}
+  &amp;w_i \sim \text{Bernoulli}(\pi_i) \\
+  &amp;\text{logit}(\pi_i) = X_i \tau
+\end{split}
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(\tau\)</span> is a vector of length <span class="math inline">\(J+1\)</span> containing the team effects and the home field advantage effect. We fit this model using maximum likelihood estimation, which is implemented in the <code>glm</code> function in R. The fitted model can then be used to predict the win probability for any game by plugging in the appropriate values for the home and away teams.</p>
 </div>
 <div id="point-spread-model" class="section level2 hasAnchor" number="1.2">
 <h2><span class="header-section-number">1.2</span> Point Spread Model<a href="nfl-game-predictions.html#point-spread-model" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>The point spread model uses the same design matrix, <span class="math inline">\(X\)</span> as was used in the win probability model. Instead of a binary response, we let have a continuous response <span class="math inline">\(y\in\mathbb{R}^{N+1}\)</span> where <span class="math inline">\(y_i\)</span> equals the home team’s score minus the away team’s score in game <span class="math inline">\(i\le N\)</span>, and <span class="math inline">\(y_{N+1} = 0\)</span>. We perform linear regression to solve the equation</p>
+<p><span class="math display" id="eq:spread-eq-nfl">\[\begin{equation}
+  \tag{1.2}
+  X\beta = y.
+\end{equation}\]</span></p>
+<p>We interpret the solution <span class="math inline">\(\hat{\beta}\)</span> as our best linear unbiased estimator (BLUE) of team effects, where <span class="math inline">\(\hat{\beta}_j\)</span> is the effect of team <span class="math inline">\(j \le J\)</span>, where league average is <span class="math inline">\(0\)</span>, and <span class="math inline">\(\hat{\beta}_{J+1}\)</span> is the effect of home field advantage, assumed to be uniform across the league. On a game by game, level, we are assuming the margin of victory for the home team is given by</p>
+<p><span class="math display">\[\begin{equation}
+  {y}_i = \beta_{\text{home}[i]} - \beta_{\text{away}[i]} + \beta_{J+1} + \varepsilon_i,
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(\varepsilon_1, ...,\varepsilon_N\)</span> are independent, identically distributed, and have mean 0. There are a couple of obvious ways we can derive a win probability from this model’s estimates.</p>
 </div>
 <div id="model-comparison" class="section level2 hasAnchor" number="1.3">
 <h2><span class="header-section-number">1.3</span> Model Comparison<a href="nfl-game-predictions.html#model-comparison" class="anchor-section" aria-label="Anchor link to header"></a></h2>

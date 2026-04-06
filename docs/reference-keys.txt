@@ -1,3 +1,5 @@
+eq:design-matrix-nfl
+eq:spread-eq-nfl
 nfl-game-predictions
 win-probability-model
 point-spread-model
