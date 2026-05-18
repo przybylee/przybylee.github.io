@@ -15,7 +15,7 @@ The simplest model in the package is a logistic regression model for win probabi
   \end{cases}
 \end{equation}
 
-We let the last column be all equal to 1 to represent the effect for home field advantage.  We let the a last row be equal to 1 to make the matrix have full column rank and center the team effect estimates at 0.  The response, $w$, is a binary vector of length $N$ where $w_i = 1$ if the home team won game $i$ and $w_i = 0$ otherwise.  We use the logit link function, meaning that we assume
+We let the last column be all equal to 1 to represent the effect for home field advantage.  We let the last row equal 1 to make the matrix have full column rank and center the team effect estimates at 0.  The response, $\mathbf{w}$, is a binary vector of length $N$ where $w_i = 1$ if the home team won game $i$ and $w_i = 0$ otherwise.  We use the logit link function, meaning that we assume
 
 \begin{equation}
 \begin{split}
@@ -28,11 +28,11 @@ where $\tau$ is a vector of length $J+1$ containing the team effects and the hom
 
 ## Point Spread Model
 
-The point spread model uses the same design matrix, $X$ as was used in the win probability model.  Instead of a binary response, we let have a continuous response $y\in\mathbb{R}^{N+1}$ where $y_i$ equals the home team's score minus the away team's score in game $i\le N$, and $y_{N+1} = 0$.  We perform linear regression to solve the equation
+The point spread model uses the same design matrix, $X$ as was used in the win probability model.  Instead of a binary response, we let have a continuous response $\mathbf{y}\in\mathbb{R}^{N+1}$ where $y_i$ equals the home team's score minus the away team's score in game $i\le N$, and $y_{N+1} = 0$.  We perform linear regression to solve the equation
 
 \begin{equation}
   (#eq:spread-eq-nfl)
-  X\beta = y.
+  X\hat{\beta} = \mathbf{y}.
 \end{equation}
 
 We interpret the solution $\hat{\beta}$ as our best linear unbiased estimator (BLUE) of team effects, where $\hat{\beta}_j$ is the effect of team $j \le J$, where league average is $0$, and $\hat{\beta}_{J+1}$ is the effect of home field advantage, assumed to be uniform across the league. On a game by game, level, we are assuming the margin of victory for the home team is given by 
@@ -42,6 +42,12 @@ We interpret the solution $\hat{\beta}$ as our best linear unbiased estimator (B
 \end{equation}
 
 where $\varepsilon_1, ...,\varepsilon_N$ are independent, identically distributed, and have mean 0.  There are a couple of obvious ways we can derive a win probability from this model's estimates.
+
+The simpler way to estimate win probability using the point spread model is to assume that the $\varepsilon_1, ..., \varepsilon_N \simiid N(0,\sigma^2)$.  After fitting the model, we obtain the estimate $\hat{y} := X\hat{\beta}$, and the estimate for $\sigma$ is obtained in the usual way, by dividing the sum of squared errors by degrees of freedom.  The degrees of freedom equals the number of observations minus the column rank of $X$.
+
+\begin{equation}
+\hat{\sigma}^2 = \frac{1}{N - J}\sum_{j = 1}^{N+1}(y_j - \hat{y}_j)^2
+\end{equation}
 
 ## Model Comparison
 
