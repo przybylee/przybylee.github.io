@@ -49,6 +49,21 @@ The simpler way to estimate win probability using the point spread model is to a
 \hat{\sigma}^2 = \frac{1}{N - J}\sum_{j = 1}^{N+1}(y_j - \hat{y}_j)^2
 \end{equation}
 
+With team and field advantage effects estimated, we obtain the **Normal Win Probability** estimate that team $i$ beats team $j$ at home by
+
+\begin{equation}
+  (\#eq:normal-winprob)
+  \begin{split}
+  \Prob[\beta_i - \beta_j + \beta_{J+1} + \varepsilon > 0] &= \Prob[\varepsilon < \beta_i - \beta_j + \beta_{J+1} ]\\
+  &\approx \Prob[\varepsilon < \hat{\beta}_i - \hat{\beta}_j + \hat{\beta}_{J+1}]\\
+   &= \Phi\left(\frac{\hat{\beta}_i - \hat{\beta}_j + \hat{\beta}_{J+1}}{\hat{\sigma}}\right)
+  \end{split}
+\end{equation}
+
+where $\Phi(z)$ denotes the CDF of a standard normal distribution.
+
+We also consider using the empirical distribution of the residuals to estimate win probability.  We will hold on to the assuption that the errors follow a symmetric distribution.
+
 ## Model Comparison
 
 
