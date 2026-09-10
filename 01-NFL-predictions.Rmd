@@ -1,0 +1,389 @@
+# NFL Game Predictions
+
+This chapter is an exposition on experiments using the [NFL predictions package](https://github.com/przybylee/NFLpredictions).  This package is designed to predict the outcomes of NFL games in terms of win probability, point spread, and point totals.  In the first few sections, we will describe each method of the point spread and win probability models.  In the final section, we will compare the models and how they perform against betting market lines.  At this point, we find that the simple models offered by this package are outperformed by the betting market lines, but they do provide a reasonable baseline for future model development.
+
+## Win Probability Model
+
+The simplest model in the package is a logistic regression model for win probability.  Assuming $J$ teams playing a total of $N$ games, our model starts with a $(N+2) \times (J+1)$ design matrix $X$ where
+
+\begin{equation}
+  (\#eq:design-matrix-nfl)
+  X_{ij} = \begin{cases}
+    \phantom{-}1 & \text{  if  } i > N\:\text{or}\:j = J + 1\\
+    \phantom{-}1 & \text{  if  } \text{team } j \text{ is the home team in game } i\\
+   -1 & \text{  if  } \text{team } j \text{ is the away team in game } i
+  \end{cases}
+\end{equation}
+
+We let the last column be all equal to 1 to represent the effect for home field advantage.  We let the last row equal 1 to make the matrix have full column rank and center the team effect estimates at 0.  The response, $\mathbf{w}$, is a binary vector of length $N+ 1$ where $w_i = 1$ if the home team won game $i$ and $w_i = 0$ otherwise.  We use the logit link function, meaning that we assume
+
+\begin{equation}
+\begin{split}
+  &w_i \sim \text{Bernoulli}(\pi_i) \\
+  &\text{logit}(\pi_i) = X_i \tau
+\end{split}
+\end{equation}
+
+where $\tau$ is a vector of length $J+1$ containing the team effects and the home field advantage effect.  We fit this model using maximum likelihood estimation, which is implemented in the `glm` function in R.  The fitted model can then be used to predict the win probability for any game by plugging in the appropriate values for the home and away teams.
+
+## Point Spread Model
+
+The point spread model uses the same design matrix, $X$ as was used in the win probability model.  Instead of a binary response, we let have a continuous response $\mathbf{y}\in\mathbb{R}^{N+1}$ where $y_i$ equals the home team's score minus the away team's score in game $i\le N$, and $y_{N+1} = 0$.  We perform linear regression to solve the equation
+
+\begin{equation}
+  (#eq:spread-eq-nfl)
+  X\hat{\beta} = \mathbf{y}.
+\end{equation}
+
+We interpret the solution $\hat{\beta}$ as our best linear unbiased estimator (BLUE) of team effects, where $\hat{\beta}_j$ is the effect of team $j \le J$, where league average is $0$, and $\hat{\beta}_{J+1}$ is the effect of home field advantage, assumed to be uniform across the league. On a game by game, level, we are assuming the margin of victory for the home team is given by 
+
+\begin{equation}
+  {y}_i = \beta_{\text{home}[i]} - \beta_{\text{away}[i]} + \beta_{J+1} + \varepsilon_i, 
+\end{equation}
+
+where $\varepsilon_1, ...,\varepsilon_N$ are independent, identically distributed, and have mean 0.  There are a couple of obvious ways we can derive a win probability from this model's estimates.
+
+The simpler way to estimate win probability using the point spread model is to assume that the $\varepsilon_1, ..., \varepsilon_N \simiid N(0,\sigma^2)$.  After fitting the model, we obtain the estimate $\hat{y} := X\hat{\beta}$, and the estimate for $\sigma$ is obtained in the usual way, by dividing the sum of squared errors by degrees of freedom.  The degrees of freedom equals the number of observations minus the column rank of $X$.
+
+\begin{equation}
+\hat{\sigma}^2 = \frac{1}{N - J}\sum_{j = 1}^{N+1}(y_j - \hat{y}_j)^2
+\end{equation}
+
+With team and field advantage effects estimated, we obtain the **Normal Win Probability** estimate that team $i$ beats team $j$ at home by
+
+\begin{equation}
+  (\#eq:normal-winprob)
+  \begin{split}
+  \Prob[\beta_i - \beta_j + \beta_{J+1} + \varepsilon > 0] &= \Prob[\varepsilon < \beta_i - \beta_j + \beta_{J+1} ]\\
+  &\approx \Prob[\varepsilon < \hat{\beta}_i - \hat{\beta}_j + \hat{\beta}_{J+1}]\\
+   &= \Phi\left(\frac{\hat{\beta}_i - \hat{\beta}_j + \hat{\beta}_{J+1}}{\hat{\sigma}}\right)
+  \end{split}
+\end{equation}
+
+where $\Phi(z)$ denotes the CDF of a standard normal distribution.
+
+We also consider using the empirical distribution of the residuals to estimate win probability.  From the point spread model, we define the **empirical win probability estimate** that team $i$ defeats team $j$ at home by
+
+\begin{equation}
+  (\#eq:emp-winprob)
+  \begin{split}
+  \Prob[\beta_i - \beta_j + \beta_{J+1} + \varepsilon > 0] &= \Prob[\varepsilon < \beta_i - \beta_j + \beta_{J+1} ]\\
+  &\approx \frac{1}{2N}\sum_{n = 1}^N\mathbf{1}_{\{r_n <\beta_i - \beta_j + \beta_{J+1}\}} +
+  \frac{1}{2N}\sum_{n = 1}^N\mathbf{1}_{\{-r_n <\beta_i - \beta_j + \beta_{J+1}\}} 
+  \end{split}
+\end{equation}
+
+where $r_n = y_n - \hat{y}_n$ is the empirical residual from game $n$.  We combine the empirical CDF of the positive and negative residuals to create a symmetric distribution of residuals.
+
+## Model Comparison
+
+We evaluate the following five models using out-of-sample predictions from
+the 1999 through 2025 seasons:
+
+- **Normal OLS with home-field advantage** (`p_normal1` and `sp_ols1`):
+  point differentials are fit by OLS, and residuals are assumed to be
+  normally distributed.
+- **Empirical OLS with home-field advantage** (`p_emp`): the same OLS point
+  differential model is converted to a win probability using the symmetric
+  empirical residual distribution.
+- **Normal OLS without home-field advantage** (`p_normal2` and `sp_ols2`):
+  the normal OLS model is refit without a separate home-field effect.
+- **Logistic regression with home-field advantage** (`p_logistic`): game
+  outcomes are modeled directly with a logit link and a home-field effect.
+- **Logistic regression without home-field advantage** (`p_logistic2`): the
+  logistic model is refit without a separate home-field effect.
+
+The market point spread and a probability derived from the home and away
+moneylines are included as benchmarks.
+
+```{r nfl-validation-setup, message=FALSE, warning=FALSE}
+library(dplyr)
+library(ggplot2)
+library(tidyr)
+
+val_data <- readRDS(
+  "data/win_prob_validation2026-09-08.rds"
+)
+
+american_to_odds <- function(line) {
+  ifelse(line > 0, abs(line) / 100, 100 / abs(line))
+}
+
+american_to_prob <- function(line) {
+  odds <- american_to_odds(line)
+  odds / (1 + odds)
+}
+```
+
+The validation data contain one row per predicted game. The tables below
+show a small sample of the game information and model outputs.
+
+```{r nfl-validation-preview}
+validation_preview <- val_data %>%
+  select(
+    season, game_type, week, home_team, away_team,
+    spread_line, result, p_normal1, sp_ols1, p_emp,
+    p_normal2, sp_ols2, p_logistic, p_logistic2
+  ) %>%
+  slice_head(n = 10)
+
+knitr::kable(
+  validation_preview %>%
+    select(
+      season, game_type, week, home_team, away_team,
+      spread_line, result
+    ),
+  digits = 1,
+  caption = "Sample of games in the validation data."
+)
+
+knitr::kable(
+  validation_preview %>%
+    select(
+      p_normal1, sp_ols1, p_emp, p_normal2, sp_ols2,
+      p_logistic, p_logistic2
+    ),
+  digits = 3,
+  caption = "Model outputs for the sample games."
+)
+```
+
+We compare point predictions using root mean squared error (RMSE), and win
+probabilities using classification accuracy and log loss. Probabilities are
+bounded slightly away from zero and one before calculating log loss.
+
+```{r nfl-validation-metrics}
+p_fudge <- 1e-10
+
+val_performance <- val_data %>%
+  drop_na(
+    season, game_type, week, home_team, away_team,
+    spread_line, result, p_normal1, sp_ols1, p_emp,
+    p_normal2, sp_ols2, p_logistic, p_logistic2
+  ) %>%
+  mutate(
+    across(
+      starts_with("p_"),
+      ~ case_when(
+        .x < p_fudge ~ p_fudge,
+        .x > 1 - p_fudge ~ 1 - p_fudge,
+        TRUE ~ .x
+      )
+    ),
+    res_ols1 = result - sp_ols1,
+    res_ols2 = result - sp_ols2,
+    res_spread = result - spread_line,
+    p_moneyline = american_to_prob(home_moneyline) /
+      (
+        american_to_prob(home_moneyline) +
+          american_to_prob(away_moneyline)
+      ),
+    p_moneyline_home = american_to_prob(home_moneyline),
+    binary = as.numeric(result > 0),
+    log_loss_normal1 =
+      -binary * log(p_normal1) -
+      (1 - binary) * log(1 - p_normal1),
+    log_loss_normal2 =
+      -binary * log(p_normal2) -
+      (1 - binary) * log(1 - p_normal2),
+    log_loss_emp =
+      -binary * log(p_emp) -
+      (1 - binary) * log(1 - p_emp),
+    log_loss_logistic1 =
+      -binary * log(p_logistic) -
+      (1 - binary) * log(1 - p_logistic),
+    log_loss_logistic2 =
+      -binary * log(p_logistic2) -
+      (1 - binary) * log(1 - p_logistic2),
+    log_loss_moneyline =
+      -binary * log(p_moneyline) -
+      (1 - binary) * log(1 - p_moneyline),
+    acc_ols1 = as.numeric(result * sp_ols1 > 0),
+    acc_ols2 = as.numeric(result * sp_ols2 > 0),
+    acc_logistic = as.numeric(
+      result * (p_logistic - 0.5) > 0
+    ),
+    acc_spread = as.numeric(result * spread_line > 0),
+    acc_moneyline = as.numeric(
+      result * (p_moneyline - 0.5) > 0
+    )
+  )
+
+weekly <- val_performance %>%
+  group_by(week) %>%
+  summarise(
+    n = n(),
+    n_moneyline = sum(!is.na(p_moneyline)),
+    n_missing = sum(is.na(result)),
+    across(starts_with("res_"), ~ sqrt(mean(.x^2))),
+    across(starts_with("log_loss_"), ~ mean(.x, na.rm = TRUE)),
+    across(starts_with("acc_"), ~ mean(.x)),
+    .groups = "drop"
+  ) %>%
+  rename_with(
+    ~ stringr::str_replace(.x, "res_", "rmse_"),
+    starts_with("res_")
+  )
+
+game_type <- val_performance %>%
+  group_by(game_type) %>%
+  summarise(
+    n = n(),
+    n_moneyline = sum(!is.na(p_moneyline)),
+    n_missing = sum(is.na(result)),
+    across(starts_with("res_"), ~ sqrt(mean(.x^2))),
+    across(starts_with("log_loss_"), ~ mean(.x, na.rm = TRUE)),
+    across(starts_with("acc_"), ~ mean(.x)),
+    .groups = "drop"
+  ) %>%
+  rename_with(
+    ~ stringr::str_replace(.x, "res_", "rmse_"),
+    starts_with("res_")
+  ) %>%
+  arrange(desc(n))
+```
+
+### Performance by week
+
+```{r nfl-validation-weekly-tables}
+knitr::kable(
+  weekly %>%
+    select(week, n, starts_with("rmse_")),
+  digits = 3,
+  caption = "Weekly RMSE by point-spread model."
+)
+
+knitr::kable(
+  weekly %>%
+    select(week, n, starts_with("acc_")),
+  digits = 3,
+  caption = "Weekly classification accuracy by model."
+)
+
+knitr::kable(
+  weekly %>%
+    select(week, n_moneyline, starts_with("log_loss_")),
+  digits = 3,
+  caption = "Weekly log loss by win-probability model."
+)
+```
+
+```{r nfl-validation-weekly-rmse, fig.height=5, fig.width=8, message=FALSE, warning=FALSE}
+weekly %>%
+  pivot_longer(
+    starts_with("rmse_"),
+    names_to = "model",
+    values_to = "rmse"
+  ) %>%
+  ggplot(aes(x = week, y = rmse, color = model)) +
+  geom_point() +
+  geom_smooth() +
+  labs(x = "Week", y = "RMSE", title = "RMSE by Model")
+```
+
+```{r nfl-validation-weekly-accuracy, fig.height=5, fig.width=8, message=FALSE, warning=FALSE}
+weekly %>%
+  pivot_longer(
+    starts_with("acc_"),
+    names_to = "model",
+    values_to = "acc"
+  ) %>%
+  ggplot(aes(x = week, y = acc, color = model)) +
+  geom_point() +
+  geom_smooth() +
+  labs(x = "Week", y = "Accuracy", title = "Accuracy by Model")
+```
+
+```{r nfl-validation-weekly-log-loss, fig.height=5, fig.width=8, message=FALSE, warning=FALSE}
+weekly %>%
+  pivot_longer(
+    starts_with("log_loss_"),
+    names_to = "model",
+    values_to = "log_loss"
+  ) %>%
+  ggplot(aes(x = week, y = log_loss, color = model)) +
+  geom_point() +
+  geom_smooth(method = "loess", mapping = aes(weight = n)) +
+  labs(
+    x = "Week",
+    y = "Log Loss",
+    title = "Log Loss by Model"
+  )
+```
+
+### Performance by game type
+
+```{r nfl-validation-game-type-tables}
+knitr::kable(
+  game_type %>%
+    select(game_type, n, starts_with("rmse_")),
+  digits = 3,
+  caption = "RMSE by game type and point-spread model."
+)
+
+knitr::kable(
+  game_type %>%
+    select(game_type, n, starts_with("acc_")),
+  digits = 3,
+  caption = "Classification accuracy by game type and model."
+)
+
+knitr::kable(
+  game_type %>%
+    select(game_type, n_moneyline, starts_with("log_loss_")),
+  digits = 3,
+  caption = "Log loss by game type and win-probability model."
+)
+```
+
+Across the validation data, the market spread generally has lower RMSE and
+higher classification accuracy than either OLS model. Among the package's
+win-probability estimates, the normal OLS model with home-field advantage
+has the lowest overall log loss.
+
+### Distribution of predictions
+
+```{r nfl-validation-spread-distributions, fig.height=5, fig.width=8, message=FALSE, warning=FALSE}
+val_data %>%
+  pivot_longer(
+    cols = c(starts_with("sp_"), spread_line, result),
+    names_to = "model",
+    values_to = "prediction"
+  ) %>%
+  ggplot(aes(x = prediction, y = model, fill = model)) +
+  geom_violin(
+    alpha = 0.5,
+    draw_quantiles = c(0.25, 0.5, 0.75)
+  ) +
+  xlim(-50, 50) +
+  labs(
+    x = "Point Differential",
+    y = "Model",
+    title = "Spread Distributions"
+  )
+```
+
+```{r nfl-validation-probability-distributions, fig.height=5, fig.width=8, message=FALSE, warning=FALSE}
+val_performance %>%
+  filter(week > 10) %>%
+  pivot_longer(
+    cols = c(starts_with("p_")),
+    names_to = "model",
+    values_to = "prediction"
+  ) %>%
+  ggplot(aes(x = prediction, y = model, fill = model)) +
+  geom_violin(
+    alpha = 0.5,
+    draw_quantiles = c(0.25, 0.5, 0.75)
+  ) +
+  xlim(0, 1) +
+  labs(
+    x = "Win Probability",
+    y = "Model",
+    title = "Win Probability Distributions"
+  )
+```
+
+The empirical and logistic models place more mass near zero and one than
+the normal OLS models. Their more extreme predictions are penalized heavily
+by log loss when the predicted winner loses.

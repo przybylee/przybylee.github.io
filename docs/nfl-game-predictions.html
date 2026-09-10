@@ -29,7 +29,7 @@ set in the _output.yml file.</p>" />
 <meta name="author" content="Lee Przybylski" />
 
 
-<meta name="date" content="2026-09-08" />
+<meta name="date" content="2026-09-09" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -60,6 +60,71 @@ set in the _output.yml file.</p>" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -109,7 +174,12 @@ div.csl-indent {
 <ul>
 <li class="chapter" data-level="1.1" data-path="nfl-game-predictions.html"><a href="nfl-game-predictions.html#win-probability-model"><i class="fa fa-check"></i><b>1.1</b> Win Probability Model</a></li>
 <li class="chapter" data-level="1.2" data-path="nfl-game-predictions.html"><a href="nfl-game-predictions.html#point-spread-model"><i class="fa fa-check"></i><b>1.2</b> Point Spread Model</a></li>
-<li class="chapter" data-level="1.3" data-path="nfl-game-predictions.html"><a href="nfl-game-predictions.html#model-comparison"><i class="fa fa-check"></i><b>1.3</b> Model Comparison</a></li>
+<li class="chapter" data-level="1.3" data-path="nfl-game-predictions.html"><a href="nfl-game-predictions.html#model-comparison"><i class="fa fa-check"></i><b>1.3</b> Model Comparison</a>
+<ul>
+<li class="chapter" data-level="1.3.1" data-path="nfl-game-predictions.html"><a href="nfl-game-predictions.html#performance-by-week"><i class="fa fa-check"></i><b>1.3.1</b> Performance by week</a></li>
+<li class="chapter" data-level="1.3.2" data-path="nfl-game-predictions.html"><a href="nfl-game-predictions.html#performance-by-game-type"><i class="fa fa-check"></i><b>1.3.2</b> Performance by game type</a></li>
+<li class="chapter" data-level="1.3.3" data-path="nfl-game-predictions.html"><a href="nfl-game-predictions.html#distribution-of-predictions"><i class="fa fa-check"></i><b>1.3.3</b> Distribution of predictions</a></li>
+</ul></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>2</b> Footnotes and citations</a>
 <ul>
@@ -186,18 +256,1285 @@ div.csl-indent {
   \end{split}
 \end{equation}\]</span></p>
 <p>where <span class="math inline">\(\Phi(z)\)</span> denotes the CDF of a standard normal distribution.</p>
-<p>We also consider using the empirical distribution of the residuals to estimate win probability. We will hold on to the assuption that the errors follow a symmetric distribution. From the point spread model, we define the <strong>empirical win probability estimate</strong></p>
+<p>We also consider using the empirical distribution of the residuals to estimate win probability. From the point spread model, we define the <strong>empirical win probability estimate</strong> that team <span class="math inline">\(i\)</span> defeats team <span class="math inline">\(j\)</span> at home by</p>
 <p><span class="math display" id="eq:emp-winprob">\[\begin{equation}
   \tag{1.4}
   \begin{split}
   \mathbb{P}[\beta_i - \beta_j + \beta_{J+1} + \varepsilon &gt; 0] &amp;= \mathbb{P}[\varepsilon &lt; \beta_i - \beta_j + \beta_{J+1} ]\\
-  &amp;\approx \frac{1}{N}\sum_{n = 1}^N\mathbf{1}_{\{r_n &lt;\beta_i - \beta_j + \beta_{J+1}\}}
+  &amp;\approx \frac{1}{2N}\sum_{n = 1}^N\mathbf{1}_{\{r_n &lt;\beta_i - \beta_j + \beta_{J+1}\}} +
+  \frac{1}{2N}\sum_{n = 1}^N\mathbf{1}_{\{-r_n &lt;\beta_i - \beta_j + \beta_{J+1}\}}
   \end{split}
 \end{equation}\]</span></p>
+<p>where <span class="math inline">\(r_n = y_n - \hat{y}_n\)</span> is the empirical residual from game <span class="math inline">\(n\)</span>. We combine the empirical CDF of the positive and negative residuals to create a symmetric distribution of residuals.</p>
 </div>
 <div id="model-comparison" class="section level2 hasAnchor" number="1.3">
 <h2><span class="header-section-number">1.3</span> Model Comparison<a href="nfl-game-predictions.html#model-comparison" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We evaluate the following five models using out-of-sample predictions from
+the 1999 through 2025 seasons:</p>
+<ul>
+<li><strong>Normal OLS with home-field advantage</strong> (<code>p_normal1</code> and <code>sp_ols1</code>):
+point differentials are fit by OLS, and residuals are assumed to be
+normally distributed.</li>
+<li><strong>Empirical OLS with home-field advantage</strong> (<code>p_emp</code>): the same OLS point
+differential model is converted to a win probability using the symmetric
+empirical residual distribution.</li>
+<li><strong>Normal OLS without home-field advantage</strong> (<code>p_normal2</code> and <code>sp_ols2</code>):
+the normal OLS model is refit without a separate home-field effect.</li>
+<li><strong>Logistic regression with home-field advantage</strong> (<code>p_logistic</code>): game
+outcomes are modeled directly with a logit link and a home-field effect.</li>
+<li><strong>Logistic regression without home-field advantage</strong> (<code>p_logistic2</code>): the
+logistic model is refit without a separate home-field effect.</li>
+</ul>
+<p>The market point spread and a probability derived from the home and away
+moneylines are included as benchmarks.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="nfl-game-predictions.html#cb1-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-2"><a href="nfl-game-predictions.html#cb1-2" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-3"><a href="nfl-game-predictions.html#cb1-3" tabindex="-1"></a><span class="fu">library</span>(tidyr)</span>
+<span id="cb1-4"><a href="nfl-game-predictions.html#cb1-4" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="nfl-game-predictions.html#cb1-5" tabindex="-1"></a>val_data <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(</span>
+<span id="cb1-6"><a href="nfl-game-predictions.html#cb1-6" tabindex="-1"></a>  <span class="st">&quot;data/win_prob_validation2026-09-08.rds&quot;</span></span>
+<span id="cb1-7"><a href="nfl-game-predictions.html#cb1-7" tabindex="-1"></a>)</span>
+<span id="cb1-8"><a href="nfl-game-predictions.html#cb1-8" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="nfl-game-predictions.html#cb1-9" tabindex="-1"></a>american_to_odds <span class="ot">&lt;-</span> <span class="cf">function</span>(line) {</span>
+<span id="cb1-10"><a href="nfl-game-predictions.html#cb1-10" tabindex="-1"></a>  <span class="fu">ifelse</span>(line <span class="sc">&gt;</span> <span class="dv">0</span>, <span class="fu">abs</span>(line) <span class="sc">/</span> <span class="dv">100</span>, <span class="dv">100</span> <span class="sc">/</span> <span class="fu">abs</span>(line))</span>
+<span id="cb1-11"><a href="nfl-game-predictions.html#cb1-11" tabindex="-1"></a>}</span>
+<span id="cb1-12"><a href="nfl-game-predictions.html#cb1-12" tabindex="-1"></a></span>
+<span id="cb1-13"><a href="nfl-game-predictions.html#cb1-13" tabindex="-1"></a>american_to_prob <span class="ot">&lt;-</span> <span class="cf">function</span>(line) {</span>
+<span id="cb1-14"><a href="nfl-game-predictions.html#cb1-14" tabindex="-1"></a>  odds <span class="ot">&lt;-</span> <span class="fu">american_to_odds</span>(line)</span>
+<span id="cb1-15"><a href="nfl-game-predictions.html#cb1-15" tabindex="-1"></a>  odds <span class="sc">/</span> (<span class="dv">1</span> <span class="sc">+</span> odds)</span>
+<span id="cb1-16"><a href="nfl-game-predictions.html#cb1-16" tabindex="-1"></a>}</span></code></pre></div>
+<p>The validation data contain one row per predicted game. The tables below
+show a small sample of the game information and model outputs.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="nfl-game-predictions.html#cb2-1" tabindex="-1"></a>validation_preview <span class="ot">&lt;-</span> val_data <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a href="nfl-game-predictions.html#cb2-2" tabindex="-1"></a>  <span class="fu">select</span>(</span>
+<span id="cb2-3"><a href="nfl-game-predictions.html#cb2-3" tabindex="-1"></a>    season, game_type, week, home_team, away_team,</span>
+<span id="cb2-4"><a href="nfl-game-predictions.html#cb2-4" tabindex="-1"></a>    spread_line, result, p_normal1, sp_ols1, p_emp,</span>
+<span id="cb2-5"><a href="nfl-game-predictions.html#cb2-5" tabindex="-1"></a>    p_normal2, sp_ols2, p_logistic, p_logistic2</span>
+<span id="cb2-6"><a href="nfl-game-predictions.html#cb2-6" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb2-7"><a href="nfl-game-predictions.html#cb2-7" tabindex="-1"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span>
+<span id="cb2-8"><a href="nfl-game-predictions.html#cb2-8" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="nfl-game-predictions.html#cb2-9" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb2-10"><a href="nfl-game-predictions.html#cb2-10" tabindex="-1"></a>  validation_preview <span class="sc">%&gt;%</span></span>
+<span id="cb2-11"><a href="nfl-game-predictions.html#cb2-11" tabindex="-1"></a>    <span class="fu">select</span>(</span>
+<span id="cb2-12"><a href="nfl-game-predictions.html#cb2-12" tabindex="-1"></a>      season, game_type, week, home_team, away_team,</span>
+<span id="cb2-13"><a href="nfl-game-predictions.html#cb2-13" tabindex="-1"></a>      spread_line, result</span>
+<span id="cb2-14"><a href="nfl-game-predictions.html#cb2-14" tabindex="-1"></a>    ),</span>
+<span id="cb2-15"><a href="nfl-game-predictions.html#cb2-15" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">1</span>,</span>
+<span id="cb2-16"><a href="nfl-game-predictions.html#cb2-16" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&quot;Sample of games in the validation data.&quot;</span></span>
+<span id="cb2-17"><a href="nfl-game-predictions.html#cb2-17" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<caption><span id="tab:nfl-validation-preview">Table 1.1: </span>Sample of games in the validation data.</caption>
+<colgroup>
+<col width="8%" />
+<col width="12%" />
+<col width="6%" />
+<col width="24%" />
+<col width="25%" />
+<col width="14%" />
+<col width="8%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">season</th>
+<th align="left">game_type</th>
+<th align="right">week</th>
+<th align="left">home_team</th>
+<th align="left">away_team</th>
+<th align="right">spread_line</th>
+<th align="right">result</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">1999</td>
+<td align="left">REG</td>
+<td align="right">4</td>
+<td align="left">Atlanta Falcons</td>
+<td align="left">Baltimore Ravens</td>
+<td align="right">2.5</td>
+<td align="right">-6</td>
+</tr>
+<tr class="even">
+<td align="right">1999</td>
+<td align="left">REG</td>
+<td align="right">4</td>
+<td align="left">Chicago Bears</td>
+<td align="left">New Orleans Saints</td>
+<td align="right">-1.0</td>
+<td align="right">4</td>
+</tr>
+<tr class="odd">
+<td align="right">1999</td>
+<td align="left">REG</td>
+<td align="right">4</td>
+<td align="left">Cincinnati Bengals</td>
+<td align="left">St. Louis Rams</td>
+<td align="right">-3.5</td>
+<td align="right">-28</td>
+</tr>
+<tr class="even">
+<td align="right">1999</td>
+<td align="left">REG</td>
+<td align="right">4</td>
+<td align="left">Cleveland Browns</td>
+<td align="left">New England Patriots</td>
+<td align="right">-12.0</td>
+<td align="right">-12</td>
+</tr>
+<tr class="odd">
+<td align="right">1999</td>
+<td align="left">REG</td>
+<td align="right">4</td>
+<td align="left">Dallas Cowboys</td>
+<td align="left">Arizona Cardinals</td>
+<td align="right">7.0</td>
+<td align="right">28</td>
+</tr>
+<tr class="even">
+<td align="right">1999</td>
+<td align="left">REG</td>
+<td align="right">4</td>
+<td align="left">Denver Broncos</td>
+<td align="left">New York Jets</td>
+<td align="right">5.5</td>
+<td align="right">-8</td>
+</tr>
+<tr class="odd">
+<td align="right">1999</td>
+<td align="left">REG</td>
+<td align="right">4</td>
+<td align="left">Minnesota Vikings</td>
+<td align="left">Tampa Bay Buccaneers</td>
+<td align="right">7.0</td>
+<td align="right">7</td>
+</tr>
+<tr class="even">
+<td align="right">1999</td>
+<td align="left">REG</td>
+<td align="right">4</td>
+<td align="left">New York Giants</td>
+<td align="left">Philadelphia Eagles</td>
+<td align="right">9.5</td>
+<td align="right">1</td>
+</tr>
+<tr class="odd">
+<td align="right">1999</td>
+<td align="left">REG</td>
+<td align="right">4</td>
+<td align="left">Pittsburgh Steelers</td>
+<td align="left">Jacksonville Jaguars</td>
+<td align="right">-3.0</td>
+<td align="right">-14</td>
+</tr>
+<tr class="even">
+<td align="right">1999</td>
+<td align="left">REG</td>
+<td align="right">4</td>
+<td align="left">San Diego Chargers</td>
+<td align="left">Kansas City Chiefs</td>
+<td align="right">1.0</td>
+<td align="right">7</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="nfl-game-predictions.html#cb3-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb3-2"><a href="nfl-game-predictions.html#cb3-2" tabindex="-1"></a>  validation_preview <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="nfl-game-predictions.html#cb3-3" tabindex="-1"></a>    <span class="fu">select</span>(</span>
+<span id="cb3-4"><a href="nfl-game-predictions.html#cb3-4" tabindex="-1"></a>      p_normal1, sp_ols1, p_emp, p_normal2, sp_ols2,</span>
+<span id="cb3-5"><a href="nfl-game-predictions.html#cb3-5" tabindex="-1"></a>      p_logistic, p_logistic2</span>
+<span id="cb3-6"><a href="nfl-game-predictions.html#cb3-6" tabindex="-1"></a>    ),</span>
+<span id="cb3-7"><a href="nfl-game-predictions.html#cb3-7" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">3</span>,</span>
+<span id="cb3-8"><a href="nfl-game-predictions.html#cb3-8" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&quot;Model outputs for the sample games.&quot;</span></span>
+<span id="cb3-9"><a href="nfl-game-predictions.html#cb3-9" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<caption><span id="tab:nfl-validation-preview">Table 1.1: </span>Model outputs for the sample games.</caption>
+<colgroup>
+<col width="15%" />
+<col width="12%" />
+<col width="9%" />
+<col width="15%" />
+<col width="12%" />
+<col width="16%" />
+<col width="18%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">p_normal1</th>
+<th align="right">sp_ols1</th>
+<th align="right">p_emp</th>
+<th align="right">p_normal2</th>
+<th align="right">sp_ols2</th>
+<th align="right">p_logistic</th>
+<th align="right">p_logistic2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">0.556</td>
+<td align="right">2.1</td>
+<td align="right">0.568</td>
+<td align="right">0.555</td>
+<td align="right">2.0</td>
+<td align="right">1.000</td>
+<td align="right">0.333</td>
+</tr>
+<tr class="even">
+<td align="right">0.778</td>
+<td align="right">11.4</td>
+<td align="right">0.932</td>
+<td align="right">0.786</td>
+<td align="right">11.4</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+</tr>
+<tr class="odd">
+<td align="right">0.014</td>
+<td align="right">-32.9</td>
+<td align="right">0.000</td>
+<td align="right">0.011</td>
+<td align="right">-33.0</td>
+<td align="right">0.000</td>
+<td align="right">0.000</td>
+</tr>
+<tr class="even">
+<td align="right">0.021</td>
+<td align="right">-30.2</td>
+<td align="right">0.000</td>
+<td align="right">0.017</td>
+<td align="right">-30.3</td>
+<td align="right">0.969</td>
+<td align="right">0.000</td>
+</tr>
+<tr class="odd">
+<td align="right">0.988</td>
+<td align="right">33.5</td>
+<td align="right">1.000</td>
+<td align="right">0.990</td>
+<td align="right">33.5</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+</tr>
+<tr class="even">
+<td align="right">0.174</td>
+<td align="right">-14.0</td>
+<td align="right">0.023</td>
+<td align="right">0.163</td>
+<td align="right">-14.1</td>
+<td align="right">0.000</td>
+<td align="right">0.395</td>
+</tr>
+<tr class="odd">
+<td align="right">0.770</td>
+<td align="right">11.0</td>
+<td align="right">0.932</td>
+<td align="right">0.776</td>
+<td align="right">10.9</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+</tr>
+<tr class="even">
+<td align="right">0.841</td>
+<td align="right">14.9</td>
+<td align="right">0.977</td>
+<td align="right">0.849</td>
+<td align="right">14.8</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+</tr>
+<tr class="odd">
+<td align="right">0.339</td>
+<td align="right">-6.2</td>
+<td align="right">0.250</td>
+<td align="right">0.330</td>
+<td align="right">-6.3</td>
+<td align="right">1.000</td>
+<td align="right">1.000</td>
+</tr>
+<tr class="even">
+<td align="right">0.476</td>
+<td align="right">-0.9</td>
+<td align="right">0.477</td>
+<td align="right">0.475</td>
+<td align="right">-0.9</td>
+<td align="right">0.000</td>
+<td align="right">0.000</td>
+</tr>
+</tbody>
+</table>
+<p>We compare point predictions using root mean squared error (RMSE), and win
+probabilities using classification accuracy and log loss. Probabilities are
+bounded slightly away from zero and one before calculating log loss.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="nfl-game-predictions.html#cb4-1" tabindex="-1"></a>p_fudge <span class="ot">&lt;-</span> <span class="fl">1e-10</span></span>
+<span id="cb4-2"><a href="nfl-game-predictions.html#cb4-2" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="nfl-game-predictions.html#cb4-3" tabindex="-1"></a>val_performance <span class="ot">&lt;-</span> val_data <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="nfl-game-predictions.html#cb4-4" tabindex="-1"></a>  <span class="fu">drop_na</span>(</span>
+<span id="cb4-5"><a href="nfl-game-predictions.html#cb4-5" tabindex="-1"></a>    season, game_type, week, home_team, away_team,</span>
+<span id="cb4-6"><a href="nfl-game-predictions.html#cb4-6" tabindex="-1"></a>    spread_line, result, p_normal1, sp_ols1, p_emp,</span>
+<span id="cb4-7"><a href="nfl-game-predictions.html#cb4-7" tabindex="-1"></a>    p_normal2, sp_ols2, p_logistic, p_logistic2</span>
+<span id="cb4-8"><a href="nfl-game-predictions.html#cb4-8" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-9"><a href="nfl-game-predictions.html#cb4-9" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb4-10"><a href="nfl-game-predictions.html#cb4-10" tabindex="-1"></a>    <span class="fu">across</span>(</span>
+<span id="cb4-11"><a href="nfl-game-predictions.html#cb4-11" tabindex="-1"></a>      <span class="fu">starts_with</span>(<span class="st">&quot;p_&quot;</span>),</span>
+<span id="cb4-12"><a href="nfl-game-predictions.html#cb4-12" tabindex="-1"></a>      <span class="sc">~</span> <span class="fu">case_when</span>(</span>
+<span id="cb4-13"><a href="nfl-game-predictions.html#cb4-13" tabindex="-1"></a>        .x <span class="sc">&lt;</span> p_fudge <span class="sc">~</span> p_fudge,</span>
+<span id="cb4-14"><a href="nfl-game-predictions.html#cb4-14" tabindex="-1"></a>        .x <span class="sc">&gt;</span> <span class="dv">1</span> <span class="sc">-</span> p_fudge <span class="sc">~</span> <span class="dv">1</span> <span class="sc">-</span> p_fudge,</span>
+<span id="cb4-15"><a href="nfl-game-predictions.html#cb4-15" tabindex="-1"></a>        <span class="cn">TRUE</span> <span class="sc">~</span> .x</span>
+<span id="cb4-16"><a href="nfl-game-predictions.html#cb4-16" tabindex="-1"></a>      )</span>
+<span id="cb4-17"><a href="nfl-game-predictions.html#cb4-17" tabindex="-1"></a>    ),</span>
+<span id="cb4-18"><a href="nfl-game-predictions.html#cb4-18" tabindex="-1"></a>    <span class="at">res_ols1 =</span> result <span class="sc">-</span> sp_ols1,</span>
+<span id="cb4-19"><a href="nfl-game-predictions.html#cb4-19" tabindex="-1"></a>    <span class="at">res_ols2 =</span> result <span class="sc">-</span> sp_ols2,</span>
+<span id="cb4-20"><a href="nfl-game-predictions.html#cb4-20" tabindex="-1"></a>    <span class="at">res_spread =</span> result <span class="sc">-</span> spread_line,</span>
+<span id="cb4-21"><a href="nfl-game-predictions.html#cb4-21" tabindex="-1"></a>    <span class="at">p_moneyline =</span> <span class="fu">american_to_prob</span>(home_moneyline) <span class="sc">/</span></span>
+<span id="cb4-22"><a href="nfl-game-predictions.html#cb4-22" tabindex="-1"></a>      (</span>
+<span id="cb4-23"><a href="nfl-game-predictions.html#cb4-23" tabindex="-1"></a>        <span class="fu">american_to_prob</span>(home_moneyline) <span class="sc">+</span></span>
+<span id="cb4-24"><a href="nfl-game-predictions.html#cb4-24" tabindex="-1"></a>          <span class="fu">american_to_prob</span>(away_moneyline)</span>
+<span id="cb4-25"><a href="nfl-game-predictions.html#cb4-25" tabindex="-1"></a>      ),</span>
+<span id="cb4-26"><a href="nfl-game-predictions.html#cb4-26" tabindex="-1"></a>    <span class="at">p_moneyline_home =</span> <span class="fu">american_to_prob</span>(home_moneyline),</span>
+<span id="cb4-27"><a href="nfl-game-predictions.html#cb4-27" tabindex="-1"></a>    <span class="at">binary =</span> <span class="fu">as.numeric</span>(result <span class="sc">&gt;</span> <span class="dv">0</span>),</span>
+<span id="cb4-28"><a href="nfl-game-predictions.html#cb4-28" tabindex="-1"></a>    <span class="at">log_loss_normal1 =</span></span>
+<span id="cb4-29"><a href="nfl-game-predictions.html#cb4-29" tabindex="-1"></a>      <span class="sc">-</span>binary <span class="sc">*</span> <span class="fu">log</span>(p_normal1) <span class="sc">-</span></span>
+<span id="cb4-30"><a href="nfl-game-predictions.html#cb4-30" tabindex="-1"></a>      (<span class="dv">1</span> <span class="sc">-</span> binary) <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">1</span> <span class="sc">-</span> p_normal1),</span>
+<span id="cb4-31"><a href="nfl-game-predictions.html#cb4-31" tabindex="-1"></a>    <span class="at">log_loss_normal2 =</span></span>
+<span id="cb4-32"><a href="nfl-game-predictions.html#cb4-32" tabindex="-1"></a>      <span class="sc">-</span>binary <span class="sc">*</span> <span class="fu">log</span>(p_normal2) <span class="sc">-</span></span>
+<span id="cb4-33"><a href="nfl-game-predictions.html#cb4-33" tabindex="-1"></a>      (<span class="dv">1</span> <span class="sc">-</span> binary) <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">1</span> <span class="sc">-</span> p_normal2),</span>
+<span id="cb4-34"><a href="nfl-game-predictions.html#cb4-34" tabindex="-1"></a>    <span class="at">log_loss_emp =</span></span>
+<span id="cb4-35"><a href="nfl-game-predictions.html#cb4-35" tabindex="-1"></a>      <span class="sc">-</span>binary <span class="sc">*</span> <span class="fu">log</span>(p_emp) <span class="sc">-</span></span>
+<span id="cb4-36"><a href="nfl-game-predictions.html#cb4-36" tabindex="-1"></a>      (<span class="dv">1</span> <span class="sc">-</span> binary) <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">1</span> <span class="sc">-</span> p_emp),</span>
+<span id="cb4-37"><a href="nfl-game-predictions.html#cb4-37" tabindex="-1"></a>    <span class="at">log_loss_logistic1 =</span></span>
+<span id="cb4-38"><a href="nfl-game-predictions.html#cb4-38" tabindex="-1"></a>      <span class="sc">-</span>binary <span class="sc">*</span> <span class="fu">log</span>(p_logistic) <span class="sc">-</span></span>
+<span id="cb4-39"><a href="nfl-game-predictions.html#cb4-39" tabindex="-1"></a>      (<span class="dv">1</span> <span class="sc">-</span> binary) <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">1</span> <span class="sc">-</span> p_logistic),</span>
+<span id="cb4-40"><a href="nfl-game-predictions.html#cb4-40" tabindex="-1"></a>    <span class="at">log_loss_logistic2 =</span></span>
+<span id="cb4-41"><a href="nfl-game-predictions.html#cb4-41" tabindex="-1"></a>      <span class="sc">-</span>binary <span class="sc">*</span> <span class="fu">log</span>(p_logistic2) <span class="sc">-</span></span>
+<span id="cb4-42"><a href="nfl-game-predictions.html#cb4-42" tabindex="-1"></a>      (<span class="dv">1</span> <span class="sc">-</span> binary) <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">1</span> <span class="sc">-</span> p_logistic2),</span>
+<span id="cb4-43"><a href="nfl-game-predictions.html#cb4-43" tabindex="-1"></a>    <span class="at">log_loss_moneyline =</span></span>
+<span id="cb4-44"><a href="nfl-game-predictions.html#cb4-44" tabindex="-1"></a>      <span class="sc">-</span>binary <span class="sc">*</span> <span class="fu">log</span>(p_moneyline) <span class="sc">-</span></span>
+<span id="cb4-45"><a href="nfl-game-predictions.html#cb4-45" tabindex="-1"></a>      (<span class="dv">1</span> <span class="sc">-</span> binary) <span class="sc">*</span> <span class="fu">log</span>(<span class="dv">1</span> <span class="sc">-</span> p_moneyline),</span>
+<span id="cb4-46"><a href="nfl-game-predictions.html#cb4-46" tabindex="-1"></a>    <span class="at">acc_ols1 =</span> <span class="fu">as.numeric</span>(result <span class="sc">*</span> sp_ols1 <span class="sc">&gt;</span> <span class="dv">0</span>),</span>
+<span id="cb4-47"><a href="nfl-game-predictions.html#cb4-47" tabindex="-1"></a>    <span class="at">acc_ols2 =</span> <span class="fu">as.numeric</span>(result <span class="sc">*</span> sp_ols2 <span class="sc">&gt;</span> <span class="dv">0</span>),</span>
+<span id="cb4-48"><a href="nfl-game-predictions.html#cb4-48" tabindex="-1"></a>    <span class="at">acc_logistic =</span> <span class="fu">as.numeric</span>(</span>
+<span id="cb4-49"><a href="nfl-game-predictions.html#cb4-49" tabindex="-1"></a>      result <span class="sc">*</span> (p_logistic <span class="sc">-</span> <span class="fl">0.5</span>) <span class="sc">&gt;</span> <span class="dv">0</span></span>
+<span id="cb4-50"><a href="nfl-game-predictions.html#cb4-50" tabindex="-1"></a>    ),</span>
+<span id="cb4-51"><a href="nfl-game-predictions.html#cb4-51" tabindex="-1"></a>    <span class="at">acc_spread =</span> <span class="fu">as.numeric</span>(result <span class="sc">*</span> spread_line <span class="sc">&gt;</span> <span class="dv">0</span>),</span>
+<span id="cb4-52"><a href="nfl-game-predictions.html#cb4-52" tabindex="-1"></a>    <span class="at">acc_moneyline =</span> <span class="fu">as.numeric</span>(</span>
+<span id="cb4-53"><a href="nfl-game-predictions.html#cb4-53" tabindex="-1"></a>      result <span class="sc">*</span> (p_moneyline <span class="sc">-</span> <span class="fl">0.5</span>) <span class="sc">&gt;</span> <span class="dv">0</span></span>
+<span id="cb4-54"><a href="nfl-game-predictions.html#cb4-54" tabindex="-1"></a>    )</span>
+<span id="cb4-55"><a href="nfl-game-predictions.html#cb4-55" tabindex="-1"></a>  )</span>
+<span id="cb4-56"><a href="nfl-game-predictions.html#cb4-56" tabindex="-1"></a></span>
+<span id="cb4-57"><a href="nfl-game-predictions.html#cb4-57" tabindex="-1"></a>weekly <span class="ot">&lt;-</span> val_performance <span class="sc">%&gt;%</span></span>
+<span id="cb4-58"><a href="nfl-game-predictions.html#cb4-58" tabindex="-1"></a>  <span class="fu">group_by</span>(week) <span class="sc">%&gt;%</span></span>
+<span id="cb4-59"><a href="nfl-game-predictions.html#cb4-59" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb4-60"><a href="nfl-game-predictions.html#cb4-60" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb4-61"><a href="nfl-game-predictions.html#cb4-61" tabindex="-1"></a>    <span class="at">n_moneyline =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(p_moneyline)),</span>
+<span id="cb4-62"><a href="nfl-game-predictions.html#cb4-62" tabindex="-1"></a>    <span class="at">n_missing =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(result)),</span>
+<span id="cb4-63"><a href="nfl-game-predictions.html#cb4-63" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">&quot;res_&quot;</span>), <span class="sc">~</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(.x<span class="sc">^</span><span class="dv">2</span>))),</span>
+<span id="cb4-64"><a href="nfl-game-predictions.html#cb4-64" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">&quot;log_loss_&quot;</span>), <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)),</span>
+<span id="cb4-65"><a href="nfl-game-predictions.html#cb4-65" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">&quot;acc_&quot;</span>), <span class="sc">~</span> <span class="fu">mean</span>(.x)),</span>
+<span id="cb4-66"><a href="nfl-game-predictions.html#cb4-66" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span></span>
+<span id="cb4-67"><a href="nfl-game-predictions.html#cb4-67" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-68"><a href="nfl-game-predictions.html#cb4-68" tabindex="-1"></a>  <span class="fu">rename_with</span>(</span>
+<span id="cb4-69"><a href="nfl-game-predictions.html#cb4-69" tabindex="-1"></a>    <span class="sc">~</span> stringr<span class="sc">::</span><span class="fu">str_replace</span>(.x, <span class="st">&quot;res_&quot;</span>, <span class="st">&quot;rmse_&quot;</span>),</span>
+<span id="cb4-70"><a href="nfl-game-predictions.html#cb4-70" tabindex="-1"></a>    <span class="fu">starts_with</span>(<span class="st">&quot;res_&quot;</span>)</span>
+<span id="cb4-71"><a href="nfl-game-predictions.html#cb4-71" tabindex="-1"></a>  )</span>
+<span id="cb4-72"><a href="nfl-game-predictions.html#cb4-72" tabindex="-1"></a></span>
+<span id="cb4-73"><a href="nfl-game-predictions.html#cb4-73" tabindex="-1"></a>game_type <span class="ot">&lt;-</span> val_performance <span class="sc">%&gt;%</span></span>
+<span id="cb4-74"><a href="nfl-game-predictions.html#cb4-74" tabindex="-1"></a>  <span class="fu">group_by</span>(game_type) <span class="sc">%&gt;%</span></span>
+<span id="cb4-75"><a href="nfl-game-predictions.html#cb4-75" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb4-76"><a href="nfl-game-predictions.html#cb4-76" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb4-77"><a href="nfl-game-predictions.html#cb4-77" tabindex="-1"></a>    <span class="at">n_moneyline =</span> <span class="fu">sum</span>(<span class="sc">!</span><span class="fu">is.na</span>(p_moneyline)),</span>
+<span id="cb4-78"><a href="nfl-game-predictions.html#cb4-78" tabindex="-1"></a>    <span class="at">n_missing =</span> <span class="fu">sum</span>(<span class="fu">is.na</span>(result)),</span>
+<span id="cb4-79"><a href="nfl-game-predictions.html#cb4-79" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">&quot;res_&quot;</span>), <span class="sc">~</span> <span class="fu">sqrt</span>(<span class="fu">mean</span>(.x<span class="sc">^</span><span class="dv">2</span>))),</span>
+<span id="cb4-80"><a href="nfl-game-predictions.html#cb4-80" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">&quot;log_loss_&quot;</span>), <span class="sc">~</span> <span class="fu">mean</span>(.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)),</span>
+<span id="cb4-81"><a href="nfl-game-predictions.html#cb4-81" tabindex="-1"></a>    <span class="fu">across</span>(<span class="fu">starts_with</span>(<span class="st">&quot;acc_&quot;</span>), <span class="sc">~</span> <span class="fu">mean</span>(.x)),</span>
+<span id="cb4-82"><a href="nfl-game-predictions.html#cb4-82" tabindex="-1"></a>    <span class="at">.groups =</span> <span class="st">&quot;drop&quot;</span></span>
+<span id="cb4-83"><a href="nfl-game-predictions.html#cb4-83" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-84"><a href="nfl-game-predictions.html#cb4-84" tabindex="-1"></a>  <span class="fu">rename_with</span>(</span>
+<span id="cb4-85"><a href="nfl-game-predictions.html#cb4-85" tabindex="-1"></a>    <span class="sc">~</span> stringr<span class="sc">::</span><span class="fu">str_replace</span>(.x, <span class="st">&quot;res_&quot;</span>, <span class="st">&quot;rmse_&quot;</span>),</span>
+<span id="cb4-86"><a href="nfl-game-predictions.html#cb4-86" tabindex="-1"></a>    <span class="fu">starts_with</span>(<span class="st">&quot;res_&quot;</span>)</span>
+<span id="cb4-87"><a href="nfl-game-predictions.html#cb4-87" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb4-88"><a href="nfl-game-predictions.html#cb4-88" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n))</span></code></pre></div>
+<div id="performance-by-week" class="section level3 hasAnchor" number="1.3.1">
+<h3><span class="header-section-number">1.3.1</span> Performance by week<a href="nfl-game-predictions.html#performance-by-week" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="nfl-game-predictions.html#cb5-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb5-2"><a href="nfl-game-predictions.html#cb5-2" tabindex="-1"></a>  weekly <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a href="nfl-game-predictions.html#cb5-3" tabindex="-1"></a>    <span class="fu">select</span>(week, n, <span class="fu">starts_with</span>(<span class="st">&quot;rmse_&quot;</span>)),</span>
+<span id="cb5-4"><a href="nfl-game-predictions.html#cb5-4" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">3</span>,</span>
+<span id="cb5-5"><a href="nfl-game-predictions.html#cb5-5" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&quot;Weekly RMSE by point-spread model.&quot;</span></span>
+<span id="cb5-6"><a href="nfl-game-predictions.html#cb5-6" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<caption><span id="tab:nfl-validation-weekly-tables">Table 1.2: </span>Weekly RMSE by point-spread model.</caption>
+<thead>
+<tr class="header">
+<th align="right">week</th>
+<th align="right">n</th>
+<th align="right">rmse_ols1</th>
+<th align="right">rmse_ols2</th>
+<th align="right">rmse_spread</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">4</td>
+<td align="right">398</td>
+<td align="right">20.329</td>
+<td align="right">19.917</td>
+<td align="right">13.508</td>
+</tr>
+<tr class="even">
+<td align="right">5</td>
+<td align="right">384</td>
+<td align="right">15.661</td>
+<td align="right">16.087</td>
+<td align="right">12.941</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">380</td>
+<td align="right">15.374</td>
+<td align="right">15.455</td>
+<td align="right">13.143</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">378</td>
+<td align="right">15.676</td>
+<td align="right">15.910</td>
+<td align="right">14.020</td>
+</tr>
+<tr class="odd">
+<td align="right">8</td>
+<td align="right">378</td>
+<td align="right">14.292</td>
+<td align="right">14.597</td>
+<td align="right">12.838</td>
+</tr>
+<tr class="even">
+<td align="right">9</td>
+<td align="right">371</td>
+<td align="right">14.089</td>
+<td align="right">13.973</td>
+<td align="right">12.731</td>
+</tr>
+<tr class="odd">
+<td align="right">10</td>
+<td align="right">384</td>
+<td align="right">15.396</td>
+<td align="right">15.318</td>
+<td align="right">13.928</td>
+</tr>
+<tr class="even">
+<td align="right">11</td>
+<td align="right">401</td>
+<td align="right">12.864</td>
+<td align="right">13.041</td>
+<td align="right">12.244</td>
+</tr>
+<tr class="odd">
+<td align="right">12</td>
+<td align="right">417</td>
+<td align="right">12.787</td>
+<td align="right">12.871</td>
+<td align="right">12.140</td>
+</tr>
+<tr class="even">
+<td align="right">13</td>
+<td align="right">421</td>
+<td align="right">13.440</td>
+<td align="right">13.766</td>
+<td align="right">13.032</td>
+</tr>
+<tr class="odd">
+<td align="right">14</td>
+<td align="right">418</td>
+<td align="right">13.812</td>
+<td align="right">14.179</td>
+<td align="right">13.587</td>
+</tr>
+<tr class="even">
+<td align="right">15</td>
+<td align="right">429</td>
+<td align="right">13.540</td>
+<td align="right">13.869</td>
+<td align="right">13.278</td>
+</tr>
+<tr class="odd">
+<td align="right">16</td>
+<td align="right">429</td>
+<td align="right">14.500</td>
+<td align="right">14.700</td>
+<td align="right">13.731</td>
+</tr>
+<tr class="even">
+<td align="right">17</td>
+<td align="right">428</td>
+<td align="right">14.663</td>
+<td align="right">14.991</td>
+<td align="right">13.592</td>
+</tr>
+<tr class="odd">
+<td align="right">18</td>
+<td align="right">170</td>
+<td align="right">13.008</td>
+<td align="right">13.549</td>
+<td align="right">12.165</td>
+</tr>
+<tr class="even">
+<td align="right">19</td>
+<td align="right">118</td>
+<td align="right">13.470</td>
+<td align="right">13.943</td>
+<td align="right">13.392</td>
+</tr>
+<tr class="odd">
+<td align="right">20</td>
+<td align="right">64</td>
+<td align="right">14.508</td>
+<td align="right">14.696</td>
+<td align="right">14.324</td>
+</tr>
+<tr class="even">
+<td align="right">21</td>
+<td align="right">32</td>
+<td align="right">14.604</td>
+<td align="right">14.278</td>
+<td align="right">14.399</td>
+</tr>
+<tr class="odd">
+<td align="right">22</td>
+<td align="right">5</td>
+<td align="right">8.094</td>
+<td align="right">8.104</td>
+<td align="right">10.498</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="nfl-game-predictions.html#cb6-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb6-2"><a href="nfl-game-predictions.html#cb6-2" tabindex="-1"></a>  weekly <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="nfl-game-predictions.html#cb6-3" tabindex="-1"></a>    <span class="fu">select</span>(week, n, <span class="fu">starts_with</span>(<span class="st">&quot;acc_&quot;</span>)),</span>
+<span id="cb6-4"><a href="nfl-game-predictions.html#cb6-4" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">3</span>,</span>
+<span id="cb6-5"><a href="nfl-game-predictions.html#cb6-5" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&quot;Weekly classification accuracy by model.&quot;</span></span>
+<span id="cb6-6"><a href="nfl-game-predictions.html#cb6-6" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<caption><span id="tab:nfl-validation-weekly-tables">Table 1.2: </span>Weekly classification accuracy by model.</caption>
+<colgroup>
+<col width="7%" />
+<col width="6%" />
+<col width="13%" />
+<col width="13%" />
+<col width="20%" />
+<col width="16%" />
+<col width="21%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">week</th>
+<th align="right">n</th>
+<th align="right">acc_ols1</th>
+<th align="right">acc_ols2</th>
+<th align="right">acc_logistic</th>
+<th align="right">acc_spread</th>
+<th align="right">acc_moneyline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">4</td>
+<td align="right">398</td>
+<td align="right">0.538</td>
+<td align="right">0.550</td>
+<td align="right">0.523</td>
+<td align="right">0.631</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="right">5</td>
+<td align="right">384</td>
+<td align="right">0.594</td>
+<td align="right">0.573</td>
+<td align="right">0.581</td>
+<td align="right">0.633</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">380</td>
+<td align="right">0.589</td>
+<td align="right">0.582</td>
+<td align="right">0.571</td>
+<td align="right">0.624</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">378</td>
+<td align="right">0.603</td>
+<td align="right">0.598</td>
+<td align="right">0.616</td>
+<td align="right">0.677</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">8</td>
+<td align="right">378</td>
+<td align="right">0.656</td>
+<td align="right">0.680</td>
+<td align="right">0.648</td>
+<td align="right">0.688</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="right">9</td>
+<td align="right">371</td>
+<td align="right">0.604</td>
+<td align="right">0.609</td>
+<td align="right">0.633</td>
+<td align="right">0.647</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">10</td>
+<td align="right">384</td>
+<td align="right">0.570</td>
+<td align="right">0.576</td>
+<td align="right">0.552</td>
+<td align="right">0.586</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="right">11</td>
+<td align="right">401</td>
+<td align="right">0.693</td>
+<td align="right">0.678</td>
+<td align="right">0.661</td>
+<td align="right">0.733</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">12</td>
+<td align="right">417</td>
+<td align="right">0.695</td>
+<td align="right">0.679</td>
+<td align="right">0.683</td>
+<td align="right">0.724</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="right">13</td>
+<td align="right">421</td>
+<td align="right">0.656</td>
+<td align="right">0.656</td>
+<td align="right">0.622</td>
+<td align="right">0.660</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">14</td>
+<td align="right">418</td>
+<td align="right">0.653</td>
+<td align="right">0.653</td>
+<td align="right">0.656</td>
+<td align="right">0.684</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="right">15</td>
+<td align="right">429</td>
+<td align="right">0.681</td>
+<td align="right">0.667</td>
+<td align="right">0.660</td>
+<td align="right">0.699</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">16</td>
+<td align="right">429</td>
+<td align="right">0.592</td>
+<td align="right">0.594</td>
+<td align="right">0.604</td>
+<td align="right">0.629</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="right">17</td>
+<td align="right">428</td>
+<td align="right">0.657</td>
+<td align="right">0.631</td>
+<td align="right">0.638</td>
+<td align="right">0.731</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">18</td>
+<td align="right">170</td>
+<td align="right">0.618</td>
+<td align="right">0.600</td>
+<td align="right">0.606</td>
+<td align="right">0.641</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="right">19</td>
+<td align="right">118</td>
+<td align="right">0.669</td>
+<td align="right">0.636</td>
+<td align="right">0.669</td>
+<td align="right">0.661</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">20</td>
+<td align="right">64</td>
+<td align="right">0.641</td>
+<td align="right">0.547</td>
+<td align="right">0.672</td>
+<td align="right">0.641</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="right">21</td>
+<td align="right">32</td>
+<td align="right">0.562</td>
+<td align="right">0.531</td>
+<td align="right">0.469</td>
+<td align="right">0.625</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="right">22</td>
+<td align="right">5</td>
+<td align="right">0.600</td>
+<td align="right">0.600</td>
+<td align="right">0.400</td>
+<td align="right">0.400</td>
+<td align="right">0.6</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="nfl-game-predictions.html#cb7-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb7-2"><a href="nfl-game-predictions.html#cb7-2" tabindex="-1"></a>  weekly <span class="sc">%&gt;%</span></span>
+<span id="cb7-3"><a href="nfl-game-predictions.html#cb7-3" tabindex="-1"></a>    <span class="fu">select</span>(week, n_moneyline, <span class="fu">starts_with</span>(<span class="st">&quot;log_loss_&quot;</span>)),</span>
+<span id="cb7-4"><a href="nfl-game-predictions.html#cb7-4" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">3</span>,</span>
+<span id="cb7-5"><a href="nfl-game-predictions.html#cb7-5" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&quot;Weekly log loss by win-probability model.&quot;</span></span>
+<span id="cb7-6"><a href="nfl-game-predictions.html#cb7-6" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<caption><span id="tab:nfl-validation-weekly-tables">Table 1.2: </span>Weekly log loss by win-probability model.</caption>
+<colgroup>
+<col width="4%" />
+<col width="9%" />
+<col width="14%" />
+<col width="14%" />
+<col width="10%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="right">week</th>
+<th align="right">n_moneyline</th>
+<th align="right">log_loss_normal1</th>
+<th align="right">log_loss_normal2</th>
+<th align="right">log_loss_emp</th>
+<th align="right">log_loss_logistic1</th>
+<th align="right">log_loss_logistic2</th>
+<th align="right">log_loss_moneyline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">4</td>
+<td align="right">285</td>
+<td align="right">1.139</td>
+<td align="right">1.123</td>
+<td align="right">4.008</td>
+<td align="right">9.910</td>
+<td align="right">9.562</td>
+<td align="right">0.960</td>
+</tr>
+<tr class="even">
+<td align="right">5</td>
+<td align="right">286</td>
+<td align="right">0.790</td>
+<td align="right">0.794</td>
+<td align="right">1.410</td>
+<td align="right">7.200</td>
+<td align="right">6.747</td>
+<td align="right">0.956</td>
+</tr>
+<tr class="odd">
+<td align="right">6</td>
+<td align="right">283</td>
+<td align="right">0.764</td>
+<td align="right">0.773</td>
+<td align="right">0.888</td>
+<td align="right">4.603</td>
+<td align="right">4.284</td>
+<td align="right">0.963</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">279</td>
+<td align="right">0.696</td>
+<td align="right">0.719</td>
+<td align="right">0.851</td>
+<td align="right">2.176</td>
+<td align="right">2.139</td>
+<td align="right">0.982</td>
+</tr>
+<tr class="odd">
+<td align="right">8</td>
+<td align="right">280</td>
+<td align="right">0.646</td>
+<td align="right">0.668</td>
+<td align="right">0.727</td>
+<td align="right">1.985</td>
+<td align="right">1.956</td>
+<td align="right">1.057</td>
+</tr>
+<tr class="even">
+<td align="right">9</td>
+<td align="right">272</td>
+<td align="right">0.681</td>
+<td align="right">0.674</td>
+<td align="right">0.768</td>
+<td align="right">1.354</td>
+<td align="right">1.317</td>
+<td align="right">0.966</td>
+</tr>
+<tr class="odd">
+<td align="right">10</td>
+<td align="right">283</td>
+<td align="right">0.796</td>
+<td align="right">0.780</td>
+<td align="right">0.891</td>
+<td align="right">1.519</td>
+<td align="right">1.471</td>
+<td align="right">0.903</td>
+</tr>
+<tr class="even">
+<td align="right">11</td>
+<td align="right">292</td>
+<td align="right">0.594</td>
+<td align="right">0.603</td>
+<td align="right">0.602</td>
+<td align="right">0.868</td>
+<td align="right">0.880</td>
+<td align="right">1.038</td>
+</tr>
+<tr class="odd">
+<td align="right">12</td>
+<td align="right">308</td>
+<td align="right">0.593</td>
+<td align="right">0.597</td>
+<td align="right">0.597</td>
+<td align="right">0.755</td>
+<td align="right">0.749</td>
+<td align="right">1.064</td>
+</tr>
+<tr class="even">
+<td align="right">13</td>
+<td align="right">312</td>
+<td align="right">0.614</td>
+<td align="right">0.623</td>
+<td align="right">0.624</td>
+<td align="right">0.804</td>
+<td align="right">0.810</td>
+<td align="right">0.983</td>
+</tr>
+<tr class="odd">
+<td align="right">14</td>
+<td align="right">304</td>
+<td align="right">0.592</td>
+<td align="right">0.609</td>
+<td align="right">0.602</td>
+<td align="right">0.711</td>
+<td align="right">0.725</td>
+<td align="right">1.017</td>
+</tr>
+<tr class="even">
+<td align="right">15</td>
+<td align="right">319</td>
+<td align="right">0.596</td>
+<td align="right">0.606</td>
+<td align="right">0.603</td>
+<td align="right">0.937</td>
+<td align="right">0.941</td>
+<td align="right">1.039</td>
+</tr>
+<tr class="odd">
+<td align="right">16</td>
+<td align="right">318</td>
+<td align="right">0.683</td>
+<td align="right">0.693</td>
+<td align="right">0.697</td>
+<td align="right">0.871</td>
+<td align="right">0.867</td>
+<td align="right">1.003</td>
+</tr>
+<tr class="even">
+<td align="right">17</td>
+<td align="right">315</td>
+<td align="right">0.641</td>
+<td align="right">0.658</td>
+<td align="right">0.651</td>
+<td align="right">0.678</td>
+<td align="right">0.694</td>
+<td align="right">1.146</td>
+</tr>
+<tr class="odd">
+<td align="right">18</td>
+<td align="right">141</td>
+<td align="right">0.681</td>
+<td align="right">0.698</td>
+<td align="right">0.691</td>
+<td align="right">0.757</td>
+<td align="right">0.773</td>
+<td align="right">1.042</td>
+</tr>
+<tr class="even">
+<td align="right">19</td>
+<td align="right">89</td>
+<td align="right">0.603</td>
+<td align="right">0.622</td>
+<td align="right">0.602</td>
+<td align="right">0.649</td>
+<td align="right">0.651</td>
+<td align="right">1.049</td>
+</tr>
+<tr class="odd">
+<td align="right">20</td>
+<td align="right">50</td>
+<td align="right">0.654</td>
+<td align="right">0.659</td>
+<td align="right">0.655</td>
+<td align="right">0.621</td>
+<td align="right">0.618</td>
+<td align="right">1.008</td>
+</tr>
+<tr class="even">
+<td align="right">21</td>
+<td align="right">25</td>
+<td align="right">0.785</td>
+<td align="right">0.753</td>
+<td align="right">0.798</td>
+<td align="right">1.336</td>
+<td align="right">1.276</td>
+<td align="right">0.739</td>
+</tr>
+<tr class="odd">
+<td align="right">22</td>
+<td align="right">5</td>
+<td align="right">0.651</td>
+<td align="right">0.638</td>
+<td align="right">0.666</td>
+<td align="right">0.721</td>
+<td align="right">0.720</td>
+<td align="right">0.828</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="nfl-game-predictions.html#cb8-1" tabindex="-1"></a>weekly <span class="sc">%&gt;%</span></span>
+<span id="cb8-2"><a href="nfl-game-predictions.html#cb8-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb8-3"><a href="nfl-game-predictions.html#cb8-3" tabindex="-1"></a>    <span class="fu">starts_with</span>(<span class="st">&quot;rmse_&quot;</span>),</span>
+<span id="cb8-4"><a href="nfl-game-predictions.html#cb8-4" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;model&quot;</span>,</span>
+<span id="cb8-5"><a href="nfl-game-predictions.html#cb8-5" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;rmse&quot;</span></span>
+<span id="cb8-6"><a href="nfl-game-predictions.html#cb8-6" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb8-7"><a href="nfl-game-predictions.html#cb8-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> week, <span class="at">y =</span> rmse, <span class="at">color =</span> model)) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="nfl-game-predictions.html#cb8-8" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb8-9"><a href="nfl-game-predictions.html#cb8-9" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
+<span id="cb8-10"><a href="nfl-game-predictions.html#cb8-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Week&quot;</span>, <span class="at">y =</span> <span class="st">&quot;RMSE&quot;</span>, <span class="at">title =</span> <span class="st">&quot;RMSE by Model&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/nfl-validation-weekly-rmse-1.png" alt="" width="768" /></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="nfl-game-predictions.html#cb9-1" tabindex="-1"></a>weekly <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="nfl-game-predictions.html#cb9-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb9-3"><a href="nfl-game-predictions.html#cb9-3" tabindex="-1"></a>    <span class="fu">starts_with</span>(<span class="st">&quot;acc_&quot;</span>),</span>
+<span id="cb9-4"><a href="nfl-game-predictions.html#cb9-4" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;model&quot;</span>,</span>
+<span id="cb9-5"><a href="nfl-game-predictions.html#cb9-5" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;acc&quot;</span></span>
+<span id="cb9-6"><a href="nfl-game-predictions.html#cb9-6" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb9-7"><a href="nfl-game-predictions.html#cb9-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> week, <span class="at">y =</span> acc, <span class="at">color =</span> model)) <span class="sc">+</span></span>
+<span id="cb9-8"><a href="nfl-game-predictions.html#cb9-8" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb9-9"><a href="nfl-game-predictions.html#cb9-9" tabindex="-1"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
+<span id="cb9-10"><a href="nfl-game-predictions.html#cb9-10" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">&quot;Week&quot;</span>, <span class="at">y =</span> <span class="st">&quot;Accuracy&quot;</span>, <span class="at">title =</span> <span class="st">&quot;Accuracy by Model&quot;</span>)</span></code></pre></div>
+<p><img src="_main_files/figure-html/nfl-validation-weekly-accuracy-1.png" alt="" width="768" /></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="nfl-game-predictions.html#cb10-1" tabindex="-1"></a>weekly <span class="sc">%&gt;%</span></span>
+<span id="cb10-2"><a href="nfl-game-predictions.html#cb10-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb10-3"><a href="nfl-game-predictions.html#cb10-3" tabindex="-1"></a>    <span class="fu">starts_with</span>(<span class="st">&quot;log_loss_&quot;</span>),</span>
+<span id="cb10-4"><a href="nfl-game-predictions.html#cb10-4" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;model&quot;</span>,</span>
+<span id="cb10-5"><a href="nfl-game-predictions.html#cb10-5" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;log_loss&quot;</span></span>
+<span id="cb10-6"><a href="nfl-game-predictions.html#cb10-6" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb10-7"><a href="nfl-game-predictions.html#cb10-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> week, <span class="at">y =</span> log_loss, <span class="at">color =</span> model)) <span class="sc">+</span></span>
+<span id="cb10-8"><a href="nfl-game-predictions.html#cb10-8" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb10-9"><a href="nfl-game-predictions.html#cb10-9" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">&quot;loess&quot;</span>, <span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">weight =</span> n)) <span class="sc">+</span></span>
+<span id="cb10-10"><a href="nfl-game-predictions.html#cb10-10" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb10-11"><a href="nfl-game-predictions.html#cb10-11" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Week&quot;</span>,</span>
+<span id="cb10-12"><a href="nfl-game-predictions.html#cb10-12" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Log Loss&quot;</span>,</span>
+<span id="cb10-13"><a href="nfl-game-predictions.html#cb10-13" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Log Loss by Model&quot;</span></span>
+<span id="cb10-14"><a href="nfl-game-predictions.html#cb10-14" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="_main_files/figure-html/nfl-validation-weekly-log-loss-1.png" alt="" width="768" /></p>
+</div>
+<div id="performance-by-game-type" class="section level3 hasAnchor" number="1.3.2">
+<h3><span class="header-section-number">1.3.2</span> Performance by game type<a href="nfl-game-predictions.html#performance-by-game-type" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="nfl-game-predictions.html#cb11-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb11-2"><a href="nfl-game-predictions.html#cb11-2" tabindex="-1"></a>  game_type <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="nfl-game-predictions.html#cb11-3" tabindex="-1"></a>    <span class="fu">select</span>(game_type, n, <span class="fu">starts_with</span>(<span class="st">&quot;rmse_&quot;</span>)),</span>
+<span id="cb11-4"><a href="nfl-game-predictions.html#cb11-4" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">3</span>,</span>
+<span id="cb11-5"><a href="nfl-game-predictions.html#cb11-5" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&quot;RMSE by game type and point-spread model.&quot;</span></span>
+<span id="cb11-6"><a href="nfl-game-predictions.html#cb11-6" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<caption><span id="tab:nfl-validation-game-type-tables">Table 1.3: </span>RMSE by game type and point-spread model.</caption>
+<thead>
+<tr class="header">
+<th align="left">game_type</th>
+<th align="right">n</th>
+<th align="right">rmse_ols1</th>
+<th align="right">rmse_ols2</th>
+<th align="right">rmse_spread</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">REG</td>
+<td align="right">5696</td>
+<td align="right">14.803</td>
+<td align="right">14.957</td>
+<td align="right">13.182</td>
+</tr>
+<tr class="even">
+<td align="left">WC</td>
+<td align="right">120</td>
+<td align="right">13.422</td>
+<td align="right">13.989</td>
+<td align="right">13.362</td>
+</tr>
+<tr class="odd">
+<td align="left">DIV</td>
+<td align="right">108</td>
+<td align="right">12.874</td>
+<td align="right">13.257</td>
+<td align="right">12.834</td>
+</tr>
+<tr class="even">
+<td align="left">CON</td>
+<td align="right">54</td>
+<td align="right">15.021</td>
+<td align="right">15.195</td>
+<td align="right">14.646</td>
+</tr>
+<tr class="odd">
+<td align="left">SB</td>
+<td align="right">27</td>
+<td align="right">14.143</td>
+<td align="right">13.598</td>
+<td align="right">14.642</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="nfl-game-predictions.html#cb12-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb12-2"><a href="nfl-game-predictions.html#cb12-2" tabindex="-1"></a>  game_type <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="nfl-game-predictions.html#cb12-3" tabindex="-1"></a>    <span class="fu">select</span>(game_type, n, <span class="fu">starts_with</span>(<span class="st">&quot;acc_&quot;</span>)),</span>
+<span id="cb12-4"><a href="nfl-game-predictions.html#cb12-4" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">3</span>,</span>
+<span id="cb12-5"><a href="nfl-game-predictions.html#cb12-5" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&quot;Classification accuracy by game type and model.&quot;</span></span>
+<span id="cb12-6"><a href="nfl-game-predictions.html#cb12-6" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<caption><span id="tab:nfl-validation-game-type-tables">Table 1.3: </span>Classification accuracy by game type and model.</caption>
+<colgroup>
+<col width="14%" />
+<col width="7%" />
+<col width="12%" />
+<col width="12%" />
+<col width="18%" />
+<col width="15%" />
+<col width="19%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">game_type</th>
+<th align="right">n</th>
+<th align="right">acc_ols1</th>
+<th align="right">acc_ols2</th>
+<th align="right">acc_logistic</th>
+<th align="right">acc_spread</th>
+<th align="right">acc_moneyline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">REG</td>
+<td align="right">5696</td>
+<td align="right">0.628</td>
+<td align="right">0.624</td>
+<td align="right">0.619</td>
+<td align="right">0.669</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">WC</td>
+<td align="right">120</td>
+<td align="right">0.650</td>
+<td align="right">0.592</td>
+<td align="right">0.617</td>
+<td align="right">0.608</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">DIV</td>
+<td align="right">108</td>
+<td align="right">0.639</td>
+<td align="right">0.611</td>
+<td align="right">0.667</td>
+<td align="right">0.676</td>
+<td align="right">NA</td>
+</tr>
+<tr class="even">
+<td align="left">CON</td>
+<td align="right">54</td>
+<td align="right">0.667</td>
+<td align="right">0.556</td>
+<td align="right">0.685</td>
+<td align="right">0.667</td>
+<td align="right">NA</td>
+</tr>
+<tr class="odd">
+<td align="left">SB</td>
+<td align="right">27</td>
+<td align="right">0.519</td>
+<td align="right">0.556</td>
+<td align="right">0.370</td>
+<td align="right">0.519</td>
+<td align="right">NA</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="nfl-game-predictions.html#cb13-1" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(</span>
+<span id="cb13-2"><a href="nfl-game-predictions.html#cb13-2" tabindex="-1"></a>  game_type <span class="sc">%&gt;%</span></span>
+<span id="cb13-3"><a href="nfl-game-predictions.html#cb13-3" tabindex="-1"></a>    <span class="fu">select</span>(game_type, n_moneyline, <span class="fu">starts_with</span>(<span class="st">&quot;log_loss_&quot;</span>)),</span>
+<span id="cb13-4"><a href="nfl-game-predictions.html#cb13-4" tabindex="-1"></a>  <span class="at">digits =</span> <span class="dv">3</span>,</span>
+<span id="cb13-5"><a href="nfl-game-predictions.html#cb13-5" tabindex="-1"></a>  <span class="at">caption =</span> <span class="st">&quot;Log loss by game type and win-probability model.&quot;</span></span>
+<span id="cb13-6"><a href="nfl-game-predictions.html#cb13-6" tabindex="-1"></a>)</span></code></pre></div>
+<table>
+<caption><span id="tab:nfl-validation-game-type-tables">Table 1.3: </span>Log loss by game type and win-probability model.</caption>
+<colgroup>
+<col width="7%" />
+<col width="9%" />
+<col width="13%" />
+<col width="13%" />
+<col width="10%" />
+<col width="15%" />
+<col width="15%" />
+<col width="15%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">game_type</th>
+<th align="right">n_moneyline</th>
+<th align="right">log_loss_normal1</th>
+<th align="right">log_loss_normal2</th>
+<th align="right">log_loss_emp</th>
+<th align="right">log_loss_logistic1</th>
+<th align="right">log_loss_logistic2</th>
+<th align="right">log_loss_moneyline</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">REG</td>
+<td align="right">4216</td>
+<td align="right">0.700</td>
+<td align="right">0.707</td>
+<td align="right">0.983</td>
+<td align="right">2.379</td>
+<td align="right">2.296</td>
+<td align="right">1.009</td>
+</tr>
+<tr class="even">
+<td align="left">WC</td>
+<td align="right">91</td>
+<td align="right">0.631</td>
+<td align="right">0.653</td>
+<td align="right">0.634</td>
+<td align="right">0.671</td>
+<td align="right">0.690</td>
+<td align="right">0.967</td>
+</tr>
+<tr class="odd">
+<td align="left">DIV</td>
+<td align="right">79</td>
+<td align="right">0.613</td>
+<td align="right">0.629</td>
+<td align="right">0.613</td>
+<td align="right">0.644</td>
+<td align="right">0.641</td>
+<td align="right">1.039</td>
+</tr>
+<tr class="even">
+<td align="left">CON</td>
+<td align="right">40</td>
+<td align="right">0.677</td>
+<td align="right">0.683</td>
+<td align="right">0.682</td>
+<td align="right">0.631</td>
+<td align="right">0.627</td>
+<td align="right">0.974</td>
+</tr>
+<tr class="odd">
+<td align="left">SB</td>
+<td align="right">20</td>
+<td align="right">0.783</td>
+<td align="right">0.730</td>
+<td align="right">0.796</td>
+<td align="right">1.486</td>
+<td align="right">1.408</td>
+<td align="right">0.699</td>
+</tr>
+</tbody>
+</table>
+<p>Across the validation data, the market spread generally has lower RMSE and
+higher classification accuracy than either OLS model. Among the package’s
+win-probability estimates, the normal OLS model with home-field advantage
+has the lowest overall log loss.</p>
+</div>
+<div id="distribution-of-predictions" class="section level3 hasAnchor" number="1.3.3">
+<h3><span class="header-section-number">1.3.3</span> Distribution of predictions<a href="nfl-game-predictions.html#distribution-of-predictions" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="nfl-game-predictions.html#cb14-1" tabindex="-1"></a>val_data <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="nfl-game-predictions.html#cb14-2" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb14-3"><a href="nfl-game-predictions.html#cb14-3" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(<span class="fu">starts_with</span>(<span class="st">&quot;sp_&quot;</span>), spread_line, result),</span>
+<span id="cb14-4"><a href="nfl-game-predictions.html#cb14-4" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;model&quot;</span>,</span>
+<span id="cb14-5"><a href="nfl-game-predictions.html#cb14-5" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;prediction&quot;</span></span>
+<span id="cb14-6"><a href="nfl-game-predictions.html#cb14-6" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb14-7"><a href="nfl-game-predictions.html#cb14-7" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> prediction, <span class="at">y =</span> model, <span class="at">fill =</span> model)) <span class="sc">+</span></span>
+<span id="cb14-8"><a href="nfl-game-predictions.html#cb14-8" tabindex="-1"></a>  <span class="fu">geom_violin</span>(</span>
+<span id="cb14-9"><a href="nfl-game-predictions.html#cb14-9" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb14-10"><a href="nfl-game-predictions.html#cb14-10" tabindex="-1"></a>    <span class="at">draw_quantiles =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)</span>
+<span id="cb14-11"><a href="nfl-game-predictions.html#cb14-11" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb14-12"><a href="nfl-game-predictions.html#cb14-12" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="sc">-</span><span class="dv">50</span>, <span class="dv">50</span>) <span class="sc">+</span></span>
+<span id="cb14-13"><a href="nfl-game-predictions.html#cb14-13" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb14-14"><a href="nfl-game-predictions.html#cb14-14" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Point Differential&quot;</span>,</span>
+<span id="cb14-15"><a href="nfl-game-predictions.html#cb14-15" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Model&quot;</span>,</span>
+<span id="cb14-16"><a href="nfl-game-predictions.html#cb14-16" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Spread Distributions&quot;</span></span>
+<span id="cb14-17"><a href="nfl-game-predictions.html#cb14-17" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="_main_files/figure-html/nfl-validation-spread-distributions-1.png" alt="" width="768" /></p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="nfl-game-predictions.html#cb15-1" tabindex="-1"></a>val_performance <span class="sc">%&gt;%</span></span>
+<span id="cb15-2"><a href="nfl-game-predictions.html#cb15-2" tabindex="-1"></a>  <span class="fu">filter</span>(week <span class="sc">&gt;</span> <span class="dv">10</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-3"><a href="nfl-game-predictions.html#cb15-3" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(</span>
+<span id="cb15-4"><a href="nfl-game-predictions.html#cb15-4" tabindex="-1"></a>    <span class="at">cols =</span> <span class="fu">c</span>(<span class="fu">starts_with</span>(<span class="st">&quot;p_&quot;</span>)),</span>
+<span id="cb15-5"><a href="nfl-game-predictions.html#cb15-5" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">&quot;model&quot;</span>,</span>
+<span id="cb15-6"><a href="nfl-game-predictions.html#cb15-6" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">&quot;prediction&quot;</span></span>
+<span id="cb15-7"><a href="nfl-game-predictions.html#cb15-7" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb15-8"><a href="nfl-game-predictions.html#cb15-8" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> prediction, <span class="at">y =</span> model, <span class="at">fill =</span> model)) <span class="sc">+</span></span>
+<span id="cb15-9"><a href="nfl-game-predictions.html#cb15-9" tabindex="-1"></a>  <span class="fu">geom_violin</span>(</span>
+<span id="cb15-10"><a href="nfl-game-predictions.html#cb15-10" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.5</span>,</span>
+<span id="cb15-11"><a href="nfl-game-predictions.html#cb15-11" tabindex="-1"></a>    <span class="at">draw_quantiles =</span> <span class="fu">c</span>(<span class="fl">0.25</span>, <span class="fl">0.5</span>, <span class="fl">0.75</span>)</span>
+<span id="cb15-12"><a href="nfl-game-predictions.html#cb15-12" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb15-13"><a href="nfl-game-predictions.html#cb15-13" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb15-14"><a href="nfl-game-predictions.html#cb15-14" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb15-15"><a href="nfl-game-predictions.html#cb15-15" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">&quot;Win Probability&quot;</span>,</span>
+<span id="cb15-16"><a href="nfl-game-predictions.html#cb15-16" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">&quot;Model&quot;</span>,</span>
+<span id="cb15-17"><a href="nfl-game-predictions.html#cb15-17" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">&quot;Win Probability Distributions&quot;</span></span>
+<span id="cb15-18"><a href="nfl-game-predictions.html#cb15-18" tabindex="-1"></a>  )</span></code></pre></div>
+<p><img src="_main_files/figure-html/nfl-validation-probability-distributions-1.png" alt="" width="768" /></p>
+<p>The empirical and logistic models place more mass near zero and one than
+the normal OLS models. Their more extreme predictions are penalized heavily
+by log loss when the predicted winner loses.</p>
 
+</div>
 </div>
 </div>
             </section>
@@ -237,7 +1574,7 @@ gitbook.start({
     "size": 2
   },
   "edit": {
-    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-NFL-predicitons.Rmd",
+    "link": "https://github.com/USERNAME/REPO/edit/BRANCH/01-NFL-predictions.Rmd",
     "text": "Edit"
   },
   "history": {
