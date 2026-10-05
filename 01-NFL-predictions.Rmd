@@ -96,7 +96,7 @@ the 1999 through 2025 seasons:
 The market point spread and a probability derived from the home and away
 moneylines are included as benchmarks.
 
-```{r nfl-validation-setup, message=FALSE, warning=FALSE}
+```{r nfl-validation-setup, echo=FALSE, message=FALSE, warning=FALSE}
 library(dplyr)
 library(ggplot2)
 library(tidyr)
@@ -118,7 +118,7 @@ american_to_prob <- function(line) {
 The validation data contain one row per predicted game. The tables below
 show a small sample of the game information and model outputs.
 
-```{r nfl-validation-preview}
+```{r nfl-validation-preview, echo=FALSE}
 validation_preview <- val_data %>%
   select(
     season, game_type, week, home_team, away_team,
@@ -152,7 +152,7 @@ We compare point predictions using root mean squared error (RMSE), and win
 probabilities using classification accuracy and log loss. Probabilities are
 bounded slightly away from zero and one before calculating log loss.
 
-```{r nfl-validation-metrics}
+```{r nfl-validation-metrics, echo=FALSE}
 p_fudge <- 1e-10
 
 val_performance <- val_data %>%
@@ -245,7 +245,7 @@ game_type <- val_performance %>%
 
 ### Performance by week
 
-```{r nfl-validation-weekly-tables}
+```{r nfl-validation-weekly-tables, echo=FALSE}
 knitr::kable(
   weekly %>%
     select(week, n, starts_with("rmse_")),
@@ -268,7 +268,7 @@ knitr::kable(
 )
 ```
 
-```{r nfl-validation-weekly-rmse, fig.height=5, fig.width=8, message=FALSE, warning=FALSE}
+```{r nfl-validation-weekly-rmse, echo=FALSE, fig.height=5, fig.width=8, message=FALSE, warning=FALSE}
 weekly %>%
   pivot_longer(
     starts_with("rmse_"),
@@ -281,7 +281,7 @@ weekly %>%
   labs(x = "Week", y = "RMSE", title = "RMSE by Model")
 ```
 
-```{r nfl-validation-weekly-accuracy, fig.height=5, fig.width=8, message=FALSE, warning=FALSE}
+```{r nfl-validation-weekly-accuracy, echo=FALSE, fig.height=5, fig.width=8, message=FALSE, warning=FALSE}
 weekly %>%
   pivot_longer(
     starts_with("acc_"),
@@ -294,7 +294,7 @@ weekly %>%
   labs(x = "Week", y = "Accuracy", title = "Accuracy by Model")
 ```
 
-```{r nfl-validation-weekly-log-loss, fig.height=5, fig.width=8, message=FALSE, warning=FALSE}
+```{r nfl-validation-weekly-log-loss, echo=FALSE, fig.height=5, fig.width=8, message=FALSE, warning=FALSE}
 weekly %>%
   pivot_longer(
     starts_with("log_loss_"),
@@ -313,7 +313,7 @@ weekly %>%
 
 ### Performance by game type
 
-```{r nfl-validation-game-type-tables}
+```{r nfl-validation-game-type-tables, echo=FALSE}
 knitr::kable(
   game_type %>%
     select(game_type, n, starts_with("rmse_")),
@@ -343,7 +343,7 @@ has the lowest overall log loss.
 
 ### Distribution of predictions
 
-```{r nfl-validation-spread-distributions, fig.height=5, fig.width=8, message=FALSE, warning=FALSE}
+```{r nfl-validation-spread-distributions, echo=FALSE, fig.height=5, fig.width=8, message=FALSE, warning=FALSE}
 val_data %>%
   pivot_longer(
     cols = c(starts_with("sp_"), spread_line, result),
@@ -363,7 +363,7 @@ val_data %>%
   )
 ```
 
-```{r nfl-validation-probability-distributions, fig.height=5, fig.width=8, message=FALSE, warning=FALSE}
+```{r nfl-validation-probability-distributions, echo=FALSE, fig.height=5, fig.width=8, message=FALSE, warning=FALSE}
 val_performance %>%
   filter(week > 10) %>%
   pivot_longer(
