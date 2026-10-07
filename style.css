@@ -12,3 +12,21 @@ pre {
 pre code {
   white-space: inherit;
 }
+
+#model-comparison table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+#model-comparison .reactable-caption {
+  color: #777;
+  margin: 1em 0 0.5em;
+}
+
+#model-comparison .weekly-reactable {
+  margin-bottom: 1.5em;
+  max-width: 100%;
+}

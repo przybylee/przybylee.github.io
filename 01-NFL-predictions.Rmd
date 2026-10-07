@@ -113,6 +113,59 @@ american_to_prob <- function(line) {
   odds <- american_to_odds(line)
   odds / (1 + odds)
 }
+
+validation_reactable <- function(data, caption, count_column) {
+  if (!knitr::is_html_output(excludes = c("epub", "epub2"))) {
+    return(
+      knitr::kable(
+        data,
+        digits = 3,
+        caption = caption
+      )
+    )
+  }
+
+  columns <- list(
+    week = reactable::colDef(
+      name = "Week",
+      sticky = "left",
+      width = 75,
+      format = reactable::colFormat(digits = 0)
+    )
+  )
+
+  columns[[count_column]] <- reactable::colDef(
+    minWidth = 105,
+    format = reactable::colFormat(digits = 0)
+  )
+
+  htmltools::tagList(
+    htmltools::tags$p(
+      class = "reactable-caption",
+      caption
+    ),
+    reactable::reactable(
+      data,
+      columns = columns,
+      defaultColDef = reactable::colDef(
+        minWidth = 120,
+        format = reactable::colFormat(digits = 3)
+      ),
+      sortable = TRUE,
+      resizable = TRUE,
+      highlight = TRUE,
+      striped = TRUE,
+      compact = TRUE,
+      wrap = FALSE,
+      pagination = nrow(data) > 25,
+      defaultPageSize = 25,
+      showPageSizeOptions = nrow(data) > 25,
+      pageSizeOptions = c(10, 25, 50),
+      class = "weekly-reactable",
+      style = list(overflowX = "auto")
+    )
+  )
+}
 ```
 
 The validation data contain one row per predicted game. The tables below
@@ -217,7 +270,7 @@ weekly <- val_performance %>%
     n_missing = sum(is.na(result)),
     across(starts_with("res_"), ~ sqrt(mean(.x^2))),
     across(starts_with("log_loss_"), ~ mean(.x, na.rm = TRUE)),
-    across(starts_with("acc_"), ~ mean(.x)),
+    across(starts_with("acc_"), ~ mean(.x, na.rm = TRUE)),
     .groups = "drop"
   ) %>%
   rename_with(
@@ -233,7 +286,7 @@ game_type <- val_performance %>%
     n_missing = sum(is.na(result)),
     across(starts_with("res_"), ~ sqrt(mean(.x^2))),
     across(starts_with("log_loss_"), ~ mean(.x, na.rm = TRUE)),
-    across(starts_with("acc_"), ~ mean(.x)),
+    across(starts_with("acc_"), ~ mean(.x, na.rm = TRUE)),
     .groups = "drop"
   ) %>%
   rename_with(
@@ -246,25 +299,25 @@ game_type <- val_performance %>%
 ### Performance by week
 
 ```{r nfl-validation-weekly-tables, echo=FALSE}
-knitr::kable(
+validation_reactable(
   weekly %>%
     select(week, n, starts_with("rmse_")),
-  digits = 3,
-  caption = "Weekly RMSE by point-spread model."
+  caption = "Weekly RMSE by point-spread model.",
+  count_column = "n"
 )
 
-knitr::kable(
+validation_reactable(
   weekly %>%
     select(week, n, starts_with("acc_")),
-  digits = 3,
-  caption = "Weekly classification accuracy by model."
+  caption = "Weekly classification accuracy by model.",
+  count_column = "n"
 )
 
-knitr::kable(
+validation_reactable(
   weekly %>%
     select(week, n_moneyline, starts_with("log_loss_")),
-  digits = 3,
-  caption = "Weekly log loss by win-probability model."
+  caption = "Weekly log loss by win-probability model.",
+  count_column = "n_moneyline"
 )
 ```
 
